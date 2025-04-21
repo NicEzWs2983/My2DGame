@@ -11,7 +11,7 @@ import panel.LevelPanel;
 public class AssetSetter {
     GameFrame gf;
     GamePanel gp;
-    LevelPanel lv1p;
+    LevelPanel lvp1;
     int tileSize;
 
     public String nOpenLeftWoodenDoorPath = "/objects/DoorLeft.png";
@@ -25,7 +25,7 @@ public class AssetSetter {
     public AssetSetter(GameFrame gf) {
         this.gf = gf;
         this.gp = gf.gamePanel;
-        this.lv1p = gf.level1Panel;
+        this.lvp1 = gf.levelPanel[1];
         this.tileSize = gf.gamePanel.tileSize;
     }
 
@@ -65,8 +65,8 @@ public class AssetSetter {
     public void setDoor_0_LV1P() {
 
         // Door 0
-        lv1p.obj_Door[0] = new OBJ_Door(gf);
-        OBJ_Door door = lv1p.obj_Door[0];
+        lvp1.obj_Door[0] = new OBJ_Door(gf);
+        OBJ_Door door = lvp1.obj_Door[0];
 
         door.Enbale = false;
         door.objectX = 2 * tileSize;

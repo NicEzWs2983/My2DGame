@@ -6,9 +6,7 @@ import panel.LevelPanel;
 public class CheckState {
     GameFrame gf;
     GamePanel gp;
-    LevelPanel lv1p;
-    LevelPanel lv2p;
-    LevelPanel lv3p;
+    LevelPanel lvp[];
 
     public int gameState;
     public int titleState;
@@ -24,9 +22,10 @@ public class CheckState {
     public CheckState(GameFrame gf) {
         this.gf = gf;
         this.gp = gf.gamePanel;
-        this.lv1p = gf.level1Panel;
-        this.lv2p = gf.level2Panel;
-        this.lv3p = gf.level3Panel;
+        this.lvp = new LevelPanel[gf.numberOfLevel];
+        for (int i = 0; i < gf.numberOfLevel; i++) {
+            this.lvp[i] = gf.levelPanel[i];
+        }
 
         this.titleState = gp.titleState;
         this.playState = gp.playState;
@@ -45,15 +44,15 @@ public class CheckState {
         }
 
         else if (gf.player.inLevel1Panel) {
-            return lv1p.gameState;
+            return lvp[1].gameState;
         }
 
         else if (gf.player.inLevel2Panel) {
-            return lv2p.gameState;
+            return lvp[2].gameState;
         }
 
         else if (gf.player.inLevel3Panel) {
-            return lv3p.gameState;
+            return lvp[3].gameState;
         }
 
         return 999;

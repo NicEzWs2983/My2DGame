@@ -6,9 +6,7 @@ import setting.GameFrame;
 
 public class CollisionChecker_LVP {
     GameFrame gf;
-    LevelPanel lv1p;
-    LevelPanel lv2p;
-    LevelPanel lv3p;
+    LevelPanel lvp[];
 
     int tileSize;
     int screenWidth;
@@ -20,12 +18,13 @@ public class CollisionChecker_LVP {
 
     public CollisionChecker_LVP(GameFrame gf) {
         this.gf = gf;
-        this.lv1p = gf.level1Panel;
-        this.lv2p = gf.level2Panel;
-        this.lv3p = gf.level3Panel;
+        this.lvp = new LevelPanel[gf.numberOfLevel];
+        for (int i = 0; i < gf.numberOfLevel; i++) {
+            this.lvp[i] = gf.levelPanel[i];
+        }
 
-        this.tileSize = lv1p.tileSize;
-        this.screenWidth = lv1p.screenWidth;
+        this.tileSize = lvp[0].tileSize;
+        this.screenWidth = lvp[0].screenWidth;
     }
 
     public void checkTile(Entity entity, LevelPanel lvp) {
@@ -250,11 +249,11 @@ public class CollisionChecker_LVP {
 
     public void checkNextMapPanel() {
         if (gf.player.inLevel1Panel == true) {
-            panelName = gf.lv2;
-            nextMap = lv2p;
+            panelName = gf.lv[2];
+            nextMap = lvp[2];
         } else if (gf.player.inLevel2Panel == true) {
-            panelName = gf.lv3;
-            nextMap = lv3p;
+            panelName = gf.lv[3];
+            nextMap = lvp[3];
         } else {
             panelName = gf.title;
             nextMap = null;

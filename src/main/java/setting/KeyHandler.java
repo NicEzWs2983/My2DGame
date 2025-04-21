@@ -9,12 +9,10 @@ import panel.LevelPanel;
 public class KeyHandler implements KeyListener {
     GameFrame gf;
     GamePanel gp;
-    LevelPanel lv1p;
-    LevelPanel lv2p;
-    LevelPanel lv3p;
+    LevelPanel lvp[];
     CheckState cState;
 
-    int gameState;
+    public int gameState;
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 
     public void setKeyReleased() {
@@ -28,9 +26,10 @@ public class KeyHandler implements KeyListener {
     public KeyHandler(GameFrame gf) {
         this.gf = gf;
         this.gp = gf.gamePanel;
-        this.lv1p = gf.level1Panel;
-        this.lv2p = gf.level2Panel;
-        this.lv3p = gf.level3Panel;
+        this.lvp = new LevelPanel[gf.numberOfLevel];
+        for (int i = 0; i < gf.numberOfLevel; i++) {
+            this.lvp[i] = gf.levelPanel[i];
+        }
         this.cState = gf.cState;
     }
 
@@ -62,15 +61,15 @@ public class KeyHandler implements KeyListener {
                 }
 
                 else if (gf.player.inLevel1Panel) {
-                    lv1p.gameState = cState.pauseState;
+                    lvp[1].gameState = cState.pauseState;
                 }
 
                 else if (gf.player.inLevel2Panel) {
-                    lv2p.gameState = cState.pauseState;
+                    lvp[2].gameState = cState.pauseState;
                 }
 
                 else if (gf.player.inLevel3Panel) {
-                    lv3p.gameState = cState.pauseState;
+                    lvp[3].gameState = cState.pauseState;
                 }
             }
             if (code == KeyEvent.VK_ENTER) {
@@ -85,15 +84,15 @@ public class KeyHandler implements KeyListener {
                 }
 
                 else if (gf.player.inLevel1Panel) {
-                    lv1p.gameState = cState.playState;
+                    lvp[1].gameState = cState.playState;
                 }
 
                 else if (gf.player.inLevel2Panel) {
-                    lv2p.gameState = cState.playState;
+                    lvp[2].gameState = cState.playState;
                 }
 
                 else if (gf.player.inLevel3Panel) {
-                    lv3p.gameState = cState.playState;
+                    lvp[3].gameState = cState.playState;
                 }
             }
         }
@@ -135,26 +134,26 @@ public class KeyHandler implements KeyListener {
                     }
 
                     else if (gf.player.inLevel1Panel) {
-                        lv1p.gameState = cState.playState;
+                        lvp[1].gameState = cState.playState;
                     }
 
                     else if (gf.player.inLevel2Panel) {
-                        lv2p.gameState = cState.playState;
+                        lvp[2].gameState = cState.playState;
                     }
 
                     else if (gf.player.inLevel3Panel) {
-                        lv3p.gameState = cState.playState;
+                        lvp[3].gameState = cState.playState;
                     }
                 }
                 if (gf.ui.choiceIndex == 0) {
                     if (gf.player.inGamePanel) {
                         openDoor_GP();
                     } else if (gf.player.inLevel1Panel) {
-                        openDoor_LVP(lv1p);
+                        openDoor_LVP(lvp[1]);
                     } else if (gf.player.inLevel2Panel) {
-                        openDoor_LVP(lv2p);
+                        openDoor_LVP(lvp[2]);
                     } else if (gf.player.inLevel3Panel) {
-                        openDoor_LVP(lv3p);
+                        openDoor_LVP(lvp[3]);
                     }
                 }
                 gf.ui.choiceIndex = 0;
@@ -167,15 +166,15 @@ public class KeyHandler implements KeyListener {
                 }
 
                 else if (gf.player.inLevel1Panel) {
-                    lv1p.gameState = cState.playState;
+                    lvp[1].gameState = cState.playState;
                 }
 
                 else if (gf.player.inLevel2Panel) {
-                    lv2p.gameState = cState.playState;
+                    lvp[2].gameState = cState.playState;
                 }
 
                 else if (gf.player.inLevel3Panel) {
-                    lv3p.gameState = cState.playState;
+                    lvp[3].gameState = cState.playState;
                 }
             }
         }

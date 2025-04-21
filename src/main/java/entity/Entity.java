@@ -21,9 +21,7 @@ import setting.collisionChecker.CollisionChecker_LVP;
 public class Entity {
     GameFrame gf;
     GamePanel gp;
-    LevelPanel lv1p;
-    LevelPanel lv2p;
-    LevelPanel lv3p;
+    LevelPanel lvp[];
 
     CollisionChecker cChecker;
     CollisionChecker_GP cCheckerGP;
@@ -66,9 +64,10 @@ public class Entity {
     public Entity(GameFrame gf) {
         this.gf = gf;
         this.gp = gf.gamePanel;
-        this.lv1p = gf.level1Panel;
-        this.lv2p = gf.level2Panel;
-        this.lv3p = gf.level3Panel;
+        this.lvp = new LevelPanel[gf.numberOfLevel];
+        for (int i = 0; i < gf.numberOfLevel; i++) {
+            this.lvp[i] = gf.levelPanel[i];
+        }
 
         this.eAction_GP = gf.eAction_GP;
         this.eAction_LVP = gf.eAction_LVP;
@@ -77,7 +76,7 @@ public class Entity {
         this.cCheckerGP = gf.cCheckerGP;
         this.cCheckerLVP = gf.cCheckerLVP;
 
-        this.tileSize = gp.tileSize;
+        this.tileSize = lvp[0].tileSize;
         this.width = tileSize;
         this.height = tileSize;
         solidArea = new Rectangle(width / 4, height / 2, width / 2, height / 2);
@@ -124,12 +123,12 @@ public class Entity {
         cChecker.updateSoildArea(this, solidAreaMoveSize);
 
         if (gp.gameState != gp.nextMapState) {
-            cCheckerGP.checkTile(this);
-
-            cCheckerGP.checkPlayer(this, gp.obj_Door);
-
-            objIndex = cChecker.checkObject(this, gp.obj, false);
-            objIndex = cChecker.checkDoor(this, gp.obj_Door, false);
+            if (gf.player.inGamePanel) {
+                cCheckerGP.checkTile(this);
+                cCheckerGP.checkPlayer(this, gp.obj_Door);
+                objIndex = cChecker.checkObject(this, gp.obj, false);
+                objIndex = cChecker.checkDoor(this, gp.obj_Door, false);
+            }
         }
 
         if (!collisionOn) {

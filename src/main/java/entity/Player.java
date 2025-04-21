@@ -92,18 +92,18 @@ public class Player extends Entity {
                 check_GP();
             }
             if (inLevel1Panel) {
-                cCheckerLVP.checkTile(this, lv1p);
-                cCheckerLVP.checkNextMap(this, lv1p);
-                check_LVP(lv1p);
+                cCheckerLVP.checkTile(this, lvp[1]);
+                cCheckerLVP.checkNextMap(this, lvp[1]);
+                check_LVP(lvp[1]);
             }
             if (inLevel2Panel) {
-                cCheckerLVP.checkTile(this, lv2p);
-                cCheckerLVP.checkNextMap(this, lv2p);
-                check_LVP(lv2p);
+                cCheckerLVP.checkTile(this, lvp[2]);
+                cCheckerLVP.checkNextMap(this, lvp[2]);
+                check_LVP(lvp[2]);
             }
             if (inLevel3Panel) {
-                cCheckerLVP.checkTile(this, lv3p);
-                check_LVP(lv3p);
+                cCheckerLVP.checkTile(this, lvp[3]);
+                check_LVP(lvp[3]);
             }
 
             boolean inFrame = true;
@@ -158,13 +158,13 @@ public class Player extends Entity {
                 check_GP();
             }
             if (inLevel1Panel) {
-                check_LVP(lv1p);
+                check_LVP(lvp[1]);
             }
             if (inLevel2Panel) {
-                check_LVP(lv2p);
+                check_LVP(lvp[2]);
             }
             if (inLevel3Panel) {
-                check_LVP(lv3p);
+                check_LVP(lvp[3]);
             }
 
         } else

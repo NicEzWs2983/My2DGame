@@ -12,14 +12,14 @@ public class CollisionChecker_GP {
 
     GameFrame gf;
     GamePanel gp;
-    LevelPanel lv1p;
+    LevelPanel lvp1;
 
     int tileSize;
 
     public CollisionChecker_GP(GameFrame gf) {
         this.gf = gf;
         this.gp = gf.gamePanel;
-        this.lv1p = gf.level1Panel;
+        this.lvp1 = gf.levelPanel[1];
         this.tileSize = gp.tileSize;
     }
 
@@ -84,17 +84,17 @@ public class CollisionChecker_GP {
             gf.player.inLevel1Panel = true;
             gf.player.numberOfKeys = 0;
             gf.layout.next(gf.cardPanel);
-            gf.aSetter.setObject_LVP(lv1p);
+            gf.aSetter.setObject_LVP(lvp1);
             gf.aSetter.setDoor_0_LV1P();
-            gf.aSetter.setDoor_LVP(lv1p, gp.nextMapDoorCapacity_1, gp.nextMapDoorCapacity_2, gp.nextMapDoorCapacity_3);
+            gf.aSetter.setDoor_LVP(lvp1, gp.nextMapDoorCapacity_1, gp.nextMapDoorCapacity_2, gp.nextMapDoorCapacity_3);
 
-            lv1p.x = gf.player.entityX;
-            lv1p.setupGame();
-            lv1p.requestFocusInWindow();
-            lv1p.startGameThread();
-            lv1p.nextMapDoorCapacity_1 = gp.nextMapDoorCapacity_1;
-            lv1p.nextMapDoorCapacity_2 = gp.nextMapDoorCapacity_2;
-            lv1p.nextMapDoorCapacity_3 = gp.nextMapDoorCapacity_3;
+            lvp1.x = gf.player.entityX;
+            lvp1.setupGame();
+            lvp1.requestFocusInWindow();
+            lvp1.startGameThread();
+            lvp1.nextMapDoorCapacity_1 = gp.nextMapDoorCapacity_1;
+            lvp1.nextMapDoorCapacity_2 = gp.nextMapDoorCapacity_2;
+            lvp1.nextMapDoorCapacity_3 = gp.nextMapDoorCapacity_3;
 
             gf.player.inGamePanel = false;
 

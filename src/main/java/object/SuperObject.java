@@ -8,15 +8,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import panel.GamePanel;
 import panel.LevelPanel;
 import setting.GameFrame;
 import setting.UtilityTool;
 
 public class SuperObject {
     public GameFrame gf;
-    public GamePanel gp;
-    public LevelPanel lv1p;
+    public LevelPanel lv0;
 
     public BufferedImage image;
     public String name;
@@ -31,9 +29,8 @@ public class SuperObject {
 
     public SuperObject(GameFrame gf) {
         this.gf = gf;
-        this.gp = gf.gamePanel;
-        this.lv1p = gf.level1Panel;
-        tileSize = gp.tileSize;
+        this.lv0 = gf.levelPanel[0];
+        tileSize = lv0.tileSize;
         width = tileSize;
         height = tileSize;
     }

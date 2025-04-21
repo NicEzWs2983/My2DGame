@@ -17,9 +17,14 @@ public class GameFrame extends JFrame {
     public GamePanel gamePanel = new GamePanel(this);
     public GameOverPanel gameOverPanel = new GameOverPanel(this);
 
-    public LevelPanel level1Panel = new LevelPanel(this);
-    public LevelPanel level2Panel = new LevelPanel(this);
-    public LevelPanel level3Panel = new LevelPanel(this);
+    public int numberOfLevel = 4;
+    public LevelPanel[] levelPanel = new LevelPanel[] {
+            new LevelPanel(this), new LevelPanel(this), new LevelPanel(this), new LevelPanel(this)
+    };
+
+    // public LevelPanel level1Panel = new LevelPanel(this);
+    // public LevelPanel level2Panel = new LevelPanel(this);
+    // public LevelPanel level3Panel = new LevelPanel(this);
 
     public CardLayout layout = new CardLayout();
     public JPanel cardPanel = new JPanel(layout);
@@ -40,9 +45,10 @@ public class GameFrame extends JFrame {
 
     public final String title = "title";
     public final String game = "game";
-    public final String lv1 = "lv1";
-    public final String lv2 = "lv2";
-    public final String lv3 = "lv3";
+    public final String lv[] = { "lv0", "lv1", "lv2", "lv3" };
+    // public final String lv1 = "lv1";
+    // public final String lv2 = "lv2";
+    // public final String lv3 = "lv3";
     public final String gameOver = "game over";
 
     public GameFrame() {
@@ -54,9 +60,14 @@ public class GameFrame extends JFrame {
 
         cardPanel.add(titlePanel, title);
         cardPanel.add(gamePanel, game);
-        cardPanel.add(level1Panel, lv1);
-        cardPanel.add(level2Panel, lv2);
-        cardPanel.add(level3Panel, lv3);
+
+        for (int i = 1; i < numberOfLevel; i++) {
+            cardPanel.add(levelPanel[i], lv[i]);
+        }
+        // cardPanel.add(level1Panel, lv1);
+        // cardPanel.add(level2Panel, lv2);
+        // cardPanel.add(level3Panel, lv3);
+
         cardPanel.add(gameOverPanel, gameOver);
 
         layout.show(cardPanel, title);
@@ -67,9 +78,28 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
 
         gamePanel.addKeyListener(keyH);
-        level1Panel.addKeyListener(keyH);
-        level2Panel.addKeyListener(keyH);
-        level3Panel.addKeyListener(keyH);
+        for (int i = 1; i < numberOfLevel; i++) {
+            levelPanel[i].addKeyListener(keyH);
+        }
+    }
+
+    public void setting() {
+        layout = new CardLayout();
+        cardPanel = new JPanel(layout);
+
+        cState = new CheckState(this);
+        keyH = new KeyHandler(this);
+        ui = new UI(this);
+
+        cChecker = new CollisionChecker(this);
+        cCheckerGP = new CollisionChecker_GP(this);
+        cCheckerLVP = new CollisionChecker_LVP(this);
+
+        eAction_GP = new EntityAction_GP(this, keyH);
+        eAction_LVP = new EntityAction_LVP(this, keyH);
+
+        aSetter = new AssetSetter(this);
+        player = new Player(this, keyH);
     }
 
 }
