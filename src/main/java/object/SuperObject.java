@@ -22,7 +22,9 @@ public class SuperObject {
     public int objectX, objectY;
     public int width, height;
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+    public Rectangle solidArea2;
     public int solidAreaDefaultX, solidAreaDefaultY;
+    public int solidAreaDefaultX2, solidAreaDefaultY2;
     public String imagePath;
     public UtilityTool uTool = new UtilityTool();
     public int tileSize;
@@ -55,7 +57,11 @@ public class SuperObject {
         g2D.drawImage(image, objectX, objectY, null);
 
         // draw solidArea
-        // g2D.setColor(Color.BLUE);
-        // g2D.drawRect(solidArea.x, solidArea.y, solidArea.width, solidArea.height);
+        g2D.setColor(Color.BLUE);
+        g2D.drawRect(solidArea.x, solidArea.y, solidArea.width, solidArea.height);
+        if (solidArea2 != null) {
+            g2D.setColor(Color.RED);
+            g2D.drawRect(solidArea2.x, solidArea2.y, solidArea2.width, solidArea2.height);
+        }
     }
 }

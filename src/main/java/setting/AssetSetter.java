@@ -209,6 +209,35 @@ public class AssetSetter {
         obj.loadImage();
     }
 
+    public void setSign_LVP(LevelPanel lvp) {
+        // signs 0
+        lvp.signs[0] = new Signs(gf);
+        Signs signs = lvp.signs[0];
+
+        signs.objectX = 3 * tileSize;
+        signs.objectY = tileSize / 2;
+        signs.setSolidArea();
+        signs.loadImage();
+
+        // signs 1
+        lvp.signs[1] = new Signs(gf);
+        signs = lvp.signs[1];
+
+        signs.objectX = 9 * tileSize;
+        signs.objectY = tileSize / 2;
+        signs.setSolidArea();
+        signs.loadImage();
+
+        // signs 2
+        lvp.signs[2] = new Signs(gf);
+        signs = lvp.signs[2];
+
+        signs.objectX = 14 * tileSize;
+        signs.objectY = (1 * tileSize) + (tileSize / 2);
+        signs.setSolidArea();
+        signs.loadImage();
+    }
+
     public int[] getRandomValue(int[] doorValues, int capacity) {
         Random r = new Random();
         int[] value = new int[capacity];

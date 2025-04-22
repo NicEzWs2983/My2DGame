@@ -4,8 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import object.OBJ_Door;
-import object.SuperObject;
+import object.*;
 import setting.GameFrame;
 import tile.TileManager;
 
@@ -16,6 +15,7 @@ public class LevelPanel extends OriginalPanel {
 
     public OBJ_Door obj_Door[] = new OBJ_Door[4];
     public SuperObject[] obj = new SuperObject[2];
+    public Signs[] signs = new Signs[5];
 
     public Rectangle nextMapDoor_1 = new Rectangle(tileSize * 1, 0, tileSize * 2, tileSize / 3);
     public Rectangle nextMapDoor_2 = new Rectangle(tileSize * 7, 0, tileSize * 2, tileSize / 3);
@@ -92,6 +92,12 @@ public class LevelPanel extends OriginalPanel {
         for (int i = 0; i < obj_Door.length; i++) {
             if (obj_Door[i] != null) {
                 obj_Door[i].draw(g2D);
+            }
+        }
+
+        for (int i = 0; i < signs.length; i++) {
+            if (signs[i] != null) {
+                signs[i].draw(g2D);
             }
         }
 

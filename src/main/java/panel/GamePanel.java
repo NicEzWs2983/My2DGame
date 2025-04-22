@@ -32,7 +32,6 @@ public class GamePanel extends OriginalPanel {
         gf.aSetter.setDoor_GP();
         gf.aSetter.setNPC_GP();
         gf.keyH.setKeyReleased();
-        gf.player.level = 0;
 
         gameState = playState;
         gf.player.inGamePanel = true;
@@ -95,22 +94,19 @@ public class GamePanel extends OriginalPanel {
                     obj_Door[i].draw(g2D);
             }
 
-            if (npc.length > 0) {
-                int playerY = gf.player.entityY + gf.player.height;
-                for (int i = 0; i < npc.length; i++) {
-                    if (npc[i] != null) {
-                        int npcY = npc[i].entityY + npc[i].height;
-                        if (npcY < playerY) {
-                            npc[i].draw(g2D);
-                            gf.player.draw(g2D);
-                        } else {
-                            gf.player.draw(g2D);
-                            npc[i].draw(g2D);
-                        }
-                    }
+            int playerY = gf.player.entityY + gf.player.height;
+            if (npc[0] != null) {
+                int npcY = npc[0].entityY + npc[0].height;
+                if (npcY < playerY) {
+                    npc[0].draw(g2D);
+                    gf.player.draw(g2D);
+                } else {
+                    gf.player.draw(g2D);
+                    npc[0].draw(g2D);
                 }
-            } else
+            } else {
                 gf.player.draw(g2D);
+            }
 
             gf.ui.draw(g2D);
         }

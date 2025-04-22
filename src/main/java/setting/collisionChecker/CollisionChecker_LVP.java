@@ -271,6 +271,7 @@ public class CollisionChecker_LVP {
         gf.player.numberOfKeys = 0;
         gf.layout.show(gf.cardPanel, panelName);
         gf.aSetter.setObject_LVP(nextMap);
+        gf.aSetter.setSign_LVP(nextMap);
         gf.aSetter.setDoor_0_LVP(nextMap);
         gf.aSetter.setDoor_LVP(nextMap,
                 currentlvp.nextMapDoorCapacity_1,

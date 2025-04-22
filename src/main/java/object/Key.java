@@ -1,5 +1,7 @@
 package object;
 
+import java.awt.Rectangle;
+
 import setting.GameFrame;
 
 public class Key extends SuperObject {
@@ -15,8 +17,8 @@ public class Key extends SuperObject {
     public void setSolidArea() {
         solidArea.x = objectX + 12;
         solidArea.y = objectY;
-        solidArea.width = tileSize - 12 * 2;
-        solidArea.height = tileSize;
+        solidArea.width = width - 12 * 2;
+        solidArea.height = height;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
     }
