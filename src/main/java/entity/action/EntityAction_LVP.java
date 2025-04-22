@@ -25,6 +25,8 @@ public class EntityAction_LVP extends EntityAction {
             if (keyH.enterPressed) {
                 if (lvp.obj_Door[i].Enbale && numberOfKeys > 0) {
                     lvp.gameState = lvp.openDoorState;
+                } else if (lvp.obj_Door[i].isOpen) {
+                    // do nothing
                 } else {
                     lvp.gameState = lvp.offLimitsState;
                 }

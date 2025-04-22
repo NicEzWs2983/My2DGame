@@ -184,6 +184,8 @@ public class Player extends Entity {
 
         objIndex = cChecker.checkObject(this, lvp.obj, true);
         eAction_LVP.touchObject(lvp, objIndex);
+
+        signIndex = cChecker.checkSigns(this, lvp.signs, true);
     }
 
     public void draw(Graphics2D g2D) {

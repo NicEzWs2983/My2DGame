@@ -59,7 +59,7 @@ public class Entity {
     public String dialogues[] = new String[10];
     public int dialogueIndex = 0;
     public String originalDirection;
-    public int npcIndex, objIndex, doorIndex;
+    public int npcIndex, objIndex, doorIndex, signIndex;
 
     public Entity(GameFrame gf) {
         this.gf = gf;

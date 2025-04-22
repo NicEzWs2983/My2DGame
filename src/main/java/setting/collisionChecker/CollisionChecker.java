@@ -1,8 +1,7 @@
 package setting.collisionChecker;
 
 import entity.Entity;
-import object.OBJ_Door;
-import object.SuperObject;
+import object.*;
 import setting.GameFrame;
 
 public class CollisionChecker {
@@ -63,24 +62,30 @@ public class CollisionChecker {
 
         for (int i = 0; i < obj.length; i++) {
             if (obj[i] != null) {
-
-                // entity.solidArea.x = entity.entityX + entity.solidAreaDefaultX;
-                // entity.solidArea.y = entity.entityY + entity.solidAreaDefaultY;
-                // gp.obj[i].solidArea.x = gp.obj[i].objectX +
-                // gp.obj[i].solidArea.x;
-                // gp.obj[i].solidArea.y = gp.obj[i].objectY +
-                // gp.obj[i].solidArea.y;
-
                 index = checkIntersects(obj, i, entity, player);
                 if (index != 999) {
                     return index;
                 }
+            }
+        }
+        return index;
+    }
 
-                // entity.solidArea.x = entity.solidAreaDefaultX;
-                // entity.solidArea.y = entity.solidAreaDefaultY;
-                // gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
-                // gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
+    public int checkSigns(Entity entity, Signs[] signs, boolean player) {
+        int index = 999;
 
+        for (int i = 0; i < signs.length; i++) {
+            if (signs[i] != null) {
+                if (entity.solidArea.intersects(signs[i].solidArea2)) {
+                    if (!player) {
+                        entity.collisionOn = true;
+                    } else {
+                        if (signs[i].collision2) {
+                            entity.collisionOn = true;
+                        }
+                        return i;
+                    }
+                }
             }
         }
 
@@ -117,12 +122,10 @@ public class CollisionChecker {
     }
 
     public int checkIntersects(SuperObject[] obj, int i, Entity entity, boolean player) {
-        if (!player) {
-
-            if (entity.solidArea.intersects(obj[i].solidArea))
+        if (entity.solidArea.intersects(obj[i].solidArea)) {
+            if (!player) {
                 entity.collisionOn = true;
-        } else {
-            if (entity.solidArea.intersects(obj[i].solidArea)) {
+            } else {
                 if (obj[i].collision) {
                     entity.collisionOn = true;
                 }

@@ -47,7 +47,6 @@ public class AssetSetter {
         gp.obj_Door[0] = new OBJ_Door(gf);
         OBJ_Door door = gp.obj_Door[0];
 
-        door.isOpen = false;
         door.objectX = 2 * tileSize;
         door.objectY = 0 * tileSize;
         door.setSolidArea();
@@ -63,7 +62,6 @@ public class AssetSetter {
     }
 
     public void setDoor_0_LV1P() {
-
         // Door 0
         lvp1.obj_Door[0] = new OBJ_Door(gf);
         OBJ_Door door = lvp1.obj_Door[0];
