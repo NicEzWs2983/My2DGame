@@ -248,12 +248,15 @@ public class CollisionChecker_LVP {
     }
 
     public void checkNextMapPanel() {
-        if (gf.player.inLevelPanel[1] == true) {
+        if (gf.player.inLevelPanel[1]) {
             panelName = gf.lv[2];
             nextMap = lvp[2];
-        } else if (gf.player.inLevelPanel[2] == true) {
+        } else if (gf.player.inLevelPanel[2]) {
             panelName = gf.lv[3];
             nextMap = lvp[3];
+        } else if (gf.player.inLevelPanel[3]) {
+            panelName = gf.lv[2];
+            nextMap = lvp[2];
         } else {
             panelName = gf.title;
             nextMap = null;
@@ -262,14 +265,19 @@ public class CollisionChecker_LVP {
 
     public void changeNextPanelState() {
 
-        if (gf.player.inLevelPanel[1] == true) {
+        if (gf.player.inLevelPanel[1]) {
             gf.player.inLevelPanel[1] = false;
             gf.player.inLevelPanel[2] = true;
         }
 
-        else if (gf.player.inLevelPanel[2] == true) {
+        else if (gf.player.inLevelPanel[2]) {
             gf.player.inLevelPanel[2] = false;
             gf.player.inLevelPanel[3] = true;
+        }
+
+        else if (gf.player.inLevelPanel[3]) {
+            gf.player.inLevelPanel[3] = false;
+            gf.player.inLevelPanel[2] = true;
         }
     }
 

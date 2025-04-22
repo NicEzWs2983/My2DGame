@@ -94,17 +94,13 @@ public class Player extends Entity {
                 cCheckerGP.checkNextMap(this);
                 check_GP();
             }
-            for (int i = 1; i < gf.numberOfLevel - 1; i++) {
+            for (int i = 1; i < gf.numberOfLevel; i++) {
                 if (inLevelPanel[i]) {
                     cCheckerLVP.checkTile(this, lvp[i]);
                     cCheckerLVP.checkNextMap(this, lvp[i]);
                     check_LVP(lvp[i]);
                     break;
                 }
-            }
-            if (inLevelPanel[gf.numberOfLevel - 1]) {
-                cCheckerLVP.checkTile(this, lvp[gf.numberOfLevel - 1]);
-                check_LVP(lvp[gf.numberOfLevel - 1]);
             }
 
             boolean inFrame = true;
