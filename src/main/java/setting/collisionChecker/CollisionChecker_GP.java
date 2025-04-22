@@ -81,7 +81,7 @@ public class CollisionChecker_GP {
         if (entity.solidArea.intersects(nextMapPortal)) {
             gp.gameState = gp.nextMapState;
 
-            gf.player.inLevel1Panel = true;
+            gf.player.inLevelPanel[1] = true;
             gf.player.numberOfKeys = 0;
             gf.layout.next(gf.cardPanel);
             gf.aSetter.setObject_LVP(lvp1);

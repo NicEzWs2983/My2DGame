@@ -15,14 +15,17 @@ public class Player extends Entity {
 
     public boolean betweenNPCAndTile = false;
     public boolean inGamePanel = false;
-    public boolean inLevel1Panel = false;
-    public boolean inLevel2Panel = false;
-    public boolean inLevel3Panel = false;
+    public boolean[] inLevelPanel;
     public int numberOfKeys = 0;
 
     public Player(GameFrame gf, KeyHandler keyH) {
         super(gf);
         this.keyH = keyH;
+
+        inLevelPanel = new boolean[gf.numberOfLevel];
+        for (int i = 0; i < gf.numberOfLevel; i++) {
+            inLevelPanel[i] = false;
+        }
 
         solidArea = new Rectangle();
         solidArea.x = 10;
@@ -91,19 +94,17 @@ public class Player extends Entity {
                 cCheckerGP.checkNextMap(this);
                 check_GP();
             }
-            if (inLevel1Panel) {
-                cCheckerLVP.checkTile(this, lvp[1]);
-                cCheckerLVP.checkNextMap(this, lvp[1]);
-                check_LVP(lvp[1]);
+            for (int i = 1; i < gf.numberOfLevel - 1; i++) {
+                if (inLevelPanel[i]) {
+                    cCheckerLVP.checkTile(this, lvp[i]);
+                    cCheckerLVP.checkNextMap(this, lvp[i]);
+                    check_LVP(lvp[i]);
+                    break;
+                }
             }
-            if (inLevel2Panel) {
-                cCheckerLVP.checkTile(this, lvp[2]);
-                cCheckerLVP.checkNextMap(this, lvp[2]);
-                check_LVP(lvp[2]);
-            }
-            if (inLevel3Panel) {
-                cCheckerLVP.checkTile(this, lvp[3]);
-                check_LVP(lvp[3]);
+            if (inLevelPanel[gf.numberOfLevel - 1]) {
+                cCheckerLVP.checkTile(this, lvp[gf.numberOfLevel - 1]);
+                check_LVP(lvp[gf.numberOfLevel - 1]);
             }
 
             boolean inFrame = true;
@@ -157,16 +158,12 @@ public class Player extends Entity {
             if (inGamePanel) {
                 check_GP();
             }
-            if (inLevel1Panel) {
-                check_LVP(lvp[1]);
+            for (int i = 1; i < gf.numberOfLevel; i++) {
+                if (inLevelPanel[i]) {
+                    check_LVP(lvp[i]);
+                    break;
+                }
             }
-            if (inLevel2Panel) {
-                check_LVP(lvp[2]);
-            }
-            if (inLevel3Panel) {
-                check_LVP(lvp[3]);
-            }
-
         } else
             spriteNum = 1;
 

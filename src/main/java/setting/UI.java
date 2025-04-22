@@ -86,9 +86,13 @@ public class UI {
             drawOffLimits();
         }
 
-        if (gf.player.inLevel1Panel || gf.player.inLevel2Panel || gf.player.inLevel3Panel) {
-            darkLight();
+        for (int i = 1; i < gf.numberOfLevel; i++) {
+            if (gf.player.inLevelPanel[i]) {
+                darkLight();
+                break;
+            }
         }
+
         drawLevel();
     }
 
@@ -96,12 +100,11 @@ public class UI {
         int level = -1;
         if (gf.player.inGamePanel) {
             level = 0;
-        } else if (gf.player.inLevel1Panel) {
-            level = 1;
-        } else if (gf.player.inLevel2Panel) {
-            level = 2;
-        } else if (gf.player.inLevel3Panel) {
-            level = 3;
+        }
+        for (int i = 1; i < gf.numberOfLevel; i++) {
+            if (gf.player.inLevelPanel[i]) {
+                level = i;
+            }
         }
 
         int x = 12 * tileSize;
@@ -203,12 +206,16 @@ public class UI {
 
         String text = "";
 
-        if (gf.player.inLevel1Panel || gf.player.inLevel2Panel || gf.player.inLevel3Panel)
-            if (gf.player.doorIndex == 0) {
-                text = "You are not allowed to return there.";
-            } else {
-                text = "You don't have enough keys to open this door.";
+        for (int i = 1; i < gf.numberOfLevel; i++) {
+            if (gf.player.inLevelPanel[i]) {
+                if (gf.player.doorIndex == 0) {
+                    text = "You are not allowed to return there.";
+                } else {
+                    text = "You don't have enough keys to open this door.";
+                }
+                break;
             }
+        }
 
         x += tileSize / 2;
         y += tileSize;

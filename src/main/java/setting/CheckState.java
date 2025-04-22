@@ -43,16 +43,10 @@ public class CheckState {
             return gp.gameState;
         }
 
-        else if (gf.player.inLevel1Panel) {
-            return lvp[1].gameState;
-        }
-
-        else if (gf.player.inLevel2Panel) {
-            return lvp[2].gameState;
-        }
-
-        else if (gf.player.inLevel3Panel) {
-            return lvp[3].gameState;
+        for (int i = 1; i < gf.numberOfLevel; i++) {
+            if (gf.player.inLevelPanel[i]) {
+                return lvp[i].gameState;
+            }
         }
 
         return 999;

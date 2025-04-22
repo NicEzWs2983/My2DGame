@@ -248,10 +248,10 @@ public class CollisionChecker_LVP {
     }
 
     public void checkNextMapPanel() {
-        if (gf.player.inLevel1Panel == true) {
+        if (gf.player.inLevelPanel[1] == true) {
             panelName = gf.lv[2];
             nextMap = lvp[2];
-        } else if (gf.player.inLevel2Panel == true) {
+        } else if (gf.player.inLevelPanel[2] == true) {
             panelName = gf.lv[3];
             nextMap = lvp[3];
         } else {
@@ -262,26 +262,22 @@ public class CollisionChecker_LVP {
 
     public void changeNextPanelState() {
 
-        if (gf.player.inLevel1Panel == true) {
-            gf.player.inLevel1Panel = false;
-            gf.player.inLevel2Panel = true;
+        if (gf.player.inLevelPanel[1] == true) {
+            gf.player.inLevelPanel[1] = false;
+            gf.player.inLevelPanel[2] = true;
         }
 
-        else if (gf.player.inLevel2Panel == true) {
-            gf.player.inLevel2Panel = false;
-            gf.player.inLevel3Panel = true;
+        else if (gf.player.inLevelPanel[2] == true) {
+            gf.player.inLevelPanel[2] = false;
+            gf.player.inLevelPanel[3] = true;
         }
     }
 
     public void changeGameOverState() {
-        if (gf.player.inLevel1Panel) {
-            gf.player.inLevel1Panel = false;
-        }
-        if (gf.player.inLevel2Panel) {
-            gf.player.inLevel2Panel = false;
-        }
-        if (gf.player.inLevel3Panel) {
-            gf.player.inLevel3Panel = false;
+        for (int i = 1; i < gf.numberOfLevel; i++) {
+            if (gf.player.inLevelPanel[i]) {
+                gf.player.inLevelPanel[i] = false;
+            }
         }
     }
 
