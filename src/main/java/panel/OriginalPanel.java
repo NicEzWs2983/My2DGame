@@ -78,7 +78,7 @@ public class OriginalPanel extends JPanel implements Runnable {
             }
 
             if (timer >= nanoSecond) {
-                System.out.println("FPS: " + drawCount);
+                // System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }

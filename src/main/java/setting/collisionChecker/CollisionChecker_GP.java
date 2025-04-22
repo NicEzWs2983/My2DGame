@@ -83,6 +83,7 @@ public class CollisionChecker_GP {
 
             gf.player.inLevelPanel[1] = true;
             gf.player.numberOfKeys = 0;
+            gf.player.level++;
             gf.layout.next(gf.cardPanel);
             gf.aSetter.setObject_LVP(lvp1);
             gf.aSetter.setDoor_0_LV1P();

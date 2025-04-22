@@ -18,6 +18,8 @@ public class Player extends Entity {
     public boolean[] inLevelPanel;
     public int numberOfKeys = 0;
 
+    public int level = -1;
+
     public Player(GameFrame gf, KeyHandler keyH) {
         super(gf);
         this.keyH = keyH;

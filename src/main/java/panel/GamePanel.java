@@ -32,6 +32,7 @@ public class GamePanel extends OriginalPanel {
         gf.aSetter.setDoor_GP();
         gf.aSetter.setNPC_GP();
         gf.keyH.setKeyReleased();
+        gf.player.level = 0;
 
         gameState = playState;
         gf.player.inGamePanel = true;

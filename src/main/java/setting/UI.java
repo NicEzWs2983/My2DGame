@@ -97,15 +97,7 @@ public class UI {
     }
 
     public void drawLevel() {
-        int level = -1;
-        if (gf.player.inGamePanel) {
-            level = 0;
-        }
-        for (int i = 1; i < gf.numberOfLevel; i++) {
-            if (gf.player.inLevelPanel[i]) {
-                level = i;
-            }
-        }
+        int level = gf.player.level;
 
         int x = 12 * tileSize;
         int y = 12 * tileSize - tileSize / 3;

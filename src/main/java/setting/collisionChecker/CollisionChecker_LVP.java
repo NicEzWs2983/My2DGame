@@ -1,5 +1,7 @@
 package setting.collisionChecker;
 
+import java.util.Arrays;
+
 import entity.Entity;
 import panel.LevelPanel;
 import setting.GameFrame;
@@ -86,7 +88,6 @@ public class CollisionChecker_LVP {
         nextMap.mapFilePath = "/map/levelMapRoom";
 
         if (entity.solidArea.intersects(lvp.nextMapDoor_1)) {
-
             lvp.gameState = lvp.nextMapState;
             gf.player.numberOfKeys = 0;
 
@@ -115,8 +116,11 @@ public class CollisionChecker_LVP {
                     // }
                     // }
 
-                    changeNextDoorCapacity(lvp, lvp.nextMapDoorCapacity_1, lvp.nextMapDoorCapacity_2,
-                            lvp.nextMapDoorCapacity_3);
+                    int[] values = changeNextDoorCapacity(lvp, lvp.nextMapDoorCapacity_1,
+                            lvp.nextMapDoorCapacity_2, lvp.nextMapDoorCapacity_3);
+                    lvp.nextMapDoorCapacity_1 = values[0];
+                    lvp.nextMapDoorCapacity_2 = values[1];
+                    lvp.nextMapDoorCapacity_3 = values[2];
 
                     limitCapacity(lvp);
                     setNextMapDoorCapacity(lvp);
@@ -140,8 +144,11 @@ public class CollisionChecker_LVP {
             if (lvp.obj_Door[2] != null) {
                 if (lvp.obj_Door[2].trueDoor) {
 
-                    changeNextDoorCapacity(lvp, lvp.nextMapDoorCapacity_2, lvp.nextMapDoorCapacity_1,
+                    int[] values = changeNextDoorCapacity(lvp, lvp.nextMapDoorCapacity_2, lvp.nextMapDoorCapacity_1,
                             lvp.nextMapDoorCapacity_3);
+                    lvp.nextMapDoorCapacity_2 = values[0];
+                    lvp.nextMapDoorCapacity_1 = values[1];
+                    lvp.nextMapDoorCapacity_3 = values[2];
 
                     limitCapacity(lvp);
                     setNextMapDoorCapacity(lvp);
@@ -165,8 +172,11 @@ public class CollisionChecker_LVP {
             if (lvp.obj_Door[3] != null) {
                 if (lvp.obj_Door[3].trueDoor) {
 
-                    changeNextDoorCapacity(lvp, lvp.nextMapDoorCapacity_3, lvp.nextMapDoorCapacity_2,
+                    int[] values = changeNextDoorCapacity(lvp, lvp.nextMapDoorCapacity_3, lvp.nextMapDoorCapacity_2,
                             lvp.nextMapDoorCapacity_1);
+                    lvp.nextMapDoorCapacity_3 = values[0];
+                    lvp.nextMapDoorCapacity_2 = values[1];
+                    lvp.nextMapDoorCapacity_1 = values[2];
 
                     limitCapacity(lvp);
                     setNextMapDoorCapacity(lvp);
@@ -207,22 +217,46 @@ public class CollisionChecker_LVP {
         }
     }
 
-    public void decreasCapacity(LevelPanel currentlvp) {
-        currentlvp.nextMapDoorCapacity_1 -= 4; // Door 1 -20%
-        currentlvp.nextMapDoorCapacity_2 -= 3; // Door 2 -15%
-        currentlvp.nextMapDoorCapacity_3 -= 2; // Door 3 -10%
+    public int[] decreasCapacity(int max, int midle, int min) {
+        max -= 4; // Door -20%
+        midle -= 3; // Door -15%
+        min -= 2; // Door -10%
+        return new int[] { max, midle, min };
     }
 
-    public void operateCapacity(LevelPanel currentlvp) {
-        currentlvp.nextMapDoorCapacity_1 -= 2; // Door 1 -10%
-        currentlvp.nextMapDoorCapacity_2 -= 1; // Door 2 -5%
-        currentlvp.nextMapDoorCapacity_3 += 1; // Door 3 +5%
+    public int[] operateCapacity(int midle, int max, int min) {
+        max -= 2; // Door -10%
+        midle += 1; // Door +5%
+        min += 2; // Door +10%
+        return new int[] { midle, max, min };
     }
 
-    public void increaseCapacity(LevelPanel currentlvp) {
-        currentlvp.nextMapDoorCapacity_1 += 3; // Door 1 +15%
-        currentlvp.nextMapDoorCapacity_2 += 3; // Door 2 +15%
-        currentlvp.nextMapDoorCapacity_3 += 3; // Door 3 +15%
+    public int[] operateCapacity_2(int max, int midle, int min) {
+        System.out.println(max + " , " + midle + " , " + min);
+        if (midle > 10) {
+            System.out.println(midle + " > 10");
+            max -= 3;
+            midle -= 3;
+            min -= 1;
+        } else if (midle == 10) {
+            System.out.println(midle + " == 10");
+            max -= 2;
+            midle -= 1;
+            min += 1;
+        } else if (midle < 10) {
+            System.out.println(midle + " < 10");
+            max += 1;
+            midle += 3;
+            min += 3;
+        }
+        return new int[] { max, midle, min };
+    }
+
+    public int[] increaseCapacity(int min, int max, int midle) {
+        max += 3; // Door 1 +15%
+        midle += 3; // Door 2 +15%
+        min += 3; // Door 3 +15%
+        return new int[] { min, max, midle };
     }
 
     public void setNextMapDoorCapacity(LevelPanel currentlvp) {
@@ -233,6 +267,8 @@ public class CollisionChecker_LVP {
 
     public void nextMapPortal(LevelPanel currentlvp) {
 
+        gf.player.level++;
+        gf.player.numberOfKeys = 0;
         gf.layout.show(gf.cardPanel, panelName);
         gf.aSetter.setObject_LVP(nextMap);
         gf.aSetter.setDoor_0_LVP(nextMap);
@@ -289,39 +325,111 @@ public class CollisionChecker_LVP {
         }
     }
 
-    public void changeNextDoorCapacity(LevelPanel currentlvp, int main, int x, int y) {
-        if (main > x) {
-            if (main > y) {
-                decreasCapacity(currentlvp);
+    public int[] changeNextDoorCapacity(LevelPanel currentlvp, int main, int x, int y) {
+        int[] values = new int[3];
+        if (x > y) {
+            System.out.println("1. x > y");
+
+            if (main > x) {
+                values = decreasCapacity(main, x, y);
+            } else if (x > main && main > y) {
+                values = operateCapacity(main, x, y);
+            } else if (y > main) {
+                values = increaseCapacity(main, x, y);
             }
 
-            else if (main <= y) {
-                operateCapacity(currentlvp);
+            if (values[0] != 0) {
+                main = values[0];
+                x = values[1];
+                y = values[2];
             }
 
-            else if (x == y) {
-                operateCapacity(currentlvp);
+            if (main == y) {
+                values = operateCapacity_2(x, main, y);
+                System.out.println(Arrays.toString(values));
+                x = values[0];
+                main = values[1];
+                y = values[2];
+            } else if (main == x) {
+                values = operateCapacity_2(main, x, y);
+                System.out.println(Arrays.toString(values));
+                main = values[0];
+                x = values[1];
+                y = values[2];
             }
         }
 
-        else if (main == x) {
+        else if (y > x) {
+            System.out.println("1. y > x");
             if (main > y) {
-                operateCapacity(currentlvp);
+                values = decreasCapacity(main, y, x);
+            } else if (y > main && main > x) {
+                values = operateCapacity(main, y, x);
+            } else if (x > main) {
+                values = increaseCapacity(main, y, x);
             }
 
-            else if (main <= y) {
-                increaseCapacity(currentlvp);
+            if (values[0] != 0) {
+                main = values[0];
+                y = values[1];
+                x = values[2];
+            }
+
+            if (main == y) {
+                values = operateCapacity_2(main, y, x);
+                System.out.println(Arrays.toString(values));
+                main = values[0];
+                y = values[1];
+                x = values[2];
+            } else if (main == x) {
+                values = operateCapacity_2(y, main, x);
+                System.out.println(Arrays.toString(values));
+                y = values[0];
+                main = values[1];
+                x = values[2];
             }
         }
 
-        else if (main < x) {
-            if (main > y) {
-                operateCapacity(currentlvp);
-            }
-
-            else if (main <= y) {
-                increaseCapacity(currentlvp);
+        else if (main == x && main == y) {
+            System.out.println("1. x == main == y ");
+            if (main == 19) {
+                main -= 11;
+                x -= 9;
+                y -= 7;
+            } else if (main == 3) {
+                main += 12;
+                x += 10;
+                y += 8;
+            } else if (main > 15) {
+                main -= 3;
+                x -= 2;
+                y -= 1;
+            } else if (main < 15 && main > 6) {
+                values = operateCapacity(x, main, y);
+                x = values[0];
+                main = values[1];
+                y = values[2];
+            } else if (main < 6) {
+                y += 3;
+                x += 2;
+                main += 1;
             }
         }
+
+        else if (x == y) {
+            System.out.println("1. x == y");
+            if (main > x) {
+                values = operateCapacity_2(main, x, y);
+                main = values[0];
+                x = values[1];
+                y = values[2];
+            } else if (y > main) {
+                values = operateCapacity_2(x, y, main);
+                x = values[0];
+                y = values[1];
+                main = values[2];
+            }
+        }
+        return new int[] { main, x, y };
     }
 }
