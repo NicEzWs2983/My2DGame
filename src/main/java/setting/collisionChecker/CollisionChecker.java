@@ -85,6 +85,10 @@ public class CollisionChecker {
                         }
                         return i;
                     }
+                } else if (entity.solidArea.intersects(signs[i].solidArea)) {
+                    if (player) {
+                        return i;
+                    }
                 }
             }
         }

@@ -9,6 +9,8 @@ import java.awt.RenderingHints;
 import java.io.IOException;
 import java.io.InputStream;
 
+import panel.LevelPanel;
+
 public class UI {
     GameFrame gf;
 
@@ -71,8 +73,6 @@ public class UI {
 
         if (gameState == cState.titleState) {
         }
-        if (gameState == cState.playState) {
-        }
         if (gameState == cState.pauseState) {
             drawPauseGame();
         }
@@ -85,15 +85,41 @@ public class UI {
         if (gameState == cState.offLimitsState) {
             drawOffLimits();
         }
+        if (gameState == cState.playState) {
+        }
 
         for (int i = 1; i < gf.numberOfLevel; i++) {
             if (gf.player.inLevelPanel[i]) {
                 darkLight();
+                drawPercent(gf.levelPanel[i]);
                 break;
             }
         }
 
         drawLevel();
+
+    }
+
+    public void drawPercent(LevelPanel lvp) {
+        g2D.setFont(unifont);
+        g2D.setFont(g2D.getFont().deriveFont(Font.BOLD, 16F));
+        g2D.setColor(Color.BLACK);
+
+        String text = lvp.doorPercent[0] + "%";
+
+        int length = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth();
+        int x = 3 * tileSize + length / 2 - 1;
+        int y = tileSize - 3;
+        g2D.drawString(text, x, y);
+
+        text = lvp.doorPercent[1] + "%";
+        x += 6 * tileSize;
+        g2D.drawString(text, x, y);
+
+        text = lvp.doorPercent[2] + "%";
+        x += 5 * tileSize;
+        y += tileSize;
+        g2D.drawString(text, x, y);
     }
 
     public void drawLevel() {

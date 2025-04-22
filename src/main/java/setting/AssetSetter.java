@@ -122,7 +122,8 @@ public class AssetSetter {
         if (checkpair(door.pairValues)) {
             door.trueDoor = true;
         }
-        System.out.println("Door_1(" + doorCapacity_1 + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
+        lvp.doorPercent[0] = doorCapacity_1 * 100 / 20;
+        System.out.println("Door_1(" + lvp.doorPercent[0] + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
 
         // Door 2
         lvp.obj_Door[2] = new OBJ_Door(gf);
@@ -157,7 +158,8 @@ public class AssetSetter {
         if (checkpair(door.pairValues)) {
             door.trueDoor = true;
         }
-        System.out.println("Door_2(" + doorCapacity_2 + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
+        lvp.doorPercent[1] = doorCapacity_2 * 100 / 20;
+        System.out.println("Door_2(" + lvp.doorPercent[1] + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
 
         // Door 3
         lvp.obj_Door[3] = new OBJ_Door(gf);
@@ -193,7 +195,8 @@ public class AssetSetter {
         if (checkpair(door.pairValues)) {
             door.trueDoor = true;
         }
-        System.out.println("Door_3(" + doorCapacity_3 + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
+        lvp.doorPercent[2] = doorCapacity_3 * 100 / 20;
+        System.out.println("Door_3(" + lvp.doorPercent[2] + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
 
     }
 

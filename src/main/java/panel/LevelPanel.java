@@ -25,6 +25,8 @@ public class LevelPanel extends OriginalPanel {
     public int nextMapDoorCapacity_2 = 10;
     public int nextMapDoorCapacity_3 = 5;
 
+    public int doorPercent[] = new int[3];
+
     public int x, y;
 
     public LevelPanel(GameFrame gf) {
@@ -67,6 +69,8 @@ public class LevelPanel extends OriginalPanel {
         if (gameState == openDoorState) {
         }
         if (gameState == offLimitsState) {
+        }
+        if (gameState == watchingSign) {
         }
 
         /*----------------------------------*/

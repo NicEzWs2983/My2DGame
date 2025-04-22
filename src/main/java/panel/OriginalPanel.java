@@ -31,6 +31,7 @@ public class OriginalPanel extends JPanel implements Runnable {
     public final int dialogueState = 3;
     public final int openDoorState = 4;
     public final int offLimitsState = 5;
+    public final int watchingSign = 6;
 
     public final int previousMapState = 998;
     public final int nextMapState = 999;
