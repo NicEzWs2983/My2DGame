@@ -235,19 +235,19 @@ public class CollisionChecker_LVP {
         System.out.println(max + " , " + midle + " , " + min);
         if (midle > 10) {
             System.out.println(midle + " > 10");
-            max -= 3;
-            midle -= 3;
-            min -= 1;
+            max -= 3; // -15%
+            midle -= 2; // -10%
+            min += 2; // +10%
         } else if (midle == 10) {
             System.out.println(midle + " == 10");
-            max -= 2;
-            midle -= 1;
-            min += 1;
+            max -= 2; // -10%
+            midle -= 1; // -5%
+            min += 2; // +10%
         } else if (midle < 10) {
             System.out.println(midle + " < 10");
-            max += 1;
-            midle += 3;
-            min += 3;
+            max -= 1; // -5%
+            midle += 3; // +15%
+            min += 3; // +15%
         }
         return new int[] { max, midle, min };
     }
