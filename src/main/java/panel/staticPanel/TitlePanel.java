@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import button.StartButton;
 import setting.GameFrame;
@@ -39,8 +40,8 @@ public class TitlePanel extends StaticPanel_O {
         Graphics2D g2D = (Graphics2D) g;
         this.g2D = g2D;
 
+        g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         drawTitleScreen();
-
     }
 
     public void drawTitleScreen() {

@@ -77,6 +77,8 @@ public class GamePanel extends OriginalPanel {
 
         Graphics2D g2D = (Graphics2D) g;
 
+        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
         if (gameState == titleState) {
 
         } else if (gameState == nextMapState) {

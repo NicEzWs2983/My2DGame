@@ -3,6 +3,7 @@ package panel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 
 import object.*;
 import setting.GameFrame;
@@ -84,6 +85,8 @@ public class LevelPanel extends OriginalPanel {
         super.paintComponent(g);
 
         Graphics2D g2D = (Graphics2D) g;
+
+        g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         gf.drawAnything.setGraphics2D(g2D);
         tileM.draw(g2D);

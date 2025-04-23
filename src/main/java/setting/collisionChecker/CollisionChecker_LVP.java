@@ -185,7 +185,6 @@ public class CollisionChecker_LVP {
                     changeNextPanelState();
 
                 } else if (!lvp.obj_Door[3].trueDoor) {
-
                     gf.layout.show(gf.cardPanel, gf.gameOver);
                     changeGameOverState();
                 }

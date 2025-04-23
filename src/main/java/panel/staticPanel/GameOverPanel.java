@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import button.RestartButton;
 import setting.GameFrame;
@@ -36,6 +37,7 @@ public class GameOverPanel extends StaticPanel_O {
         Graphics2D g2D = (Graphics2D) g;
         this.g2D = g2D;
 
+        g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         drawGameOverScreen();
     }
 
@@ -44,11 +46,19 @@ public class GameOverPanel extends StaticPanel_O {
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 80F));
         g2D.setColor(Color.RED);
 
-        String GameOverText[] = { "Game Over" };
+        String GameOverText[] = { "Game Over", "You've completed " + (gf.player.level - 1) + " levels" };
         int x = getXForCenterText(GameOverText[0]);
         int y = tileSize * 3;
 
         g2D.drawString(GameOverText[0], x, y);
+
+        g2D.setFont(maruMonica);
+        g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 60F));
+        g2D.setColor(Color.WHITE);
+        x = getXForCenterText(GameOverText[1]);
+        y += tileSize * 2;
+
+        g2D.drawString(GameOverText[1], x, y);
     }
 
 }
