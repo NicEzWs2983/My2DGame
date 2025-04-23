@@ -85,7 +85,7 @@ public class LevelPanel extends OriginalPanel {
 
         Graphics2D g2D = (Graphics2D) g;
 
-        gf.drawString.setGraphics2D(g2D);
+        gf.drawAnything.setGraphics2D(g2D);
         tileM.draw(g2D);
 
         for (int i = 0; i < obj.length; i++) {
@@ -112,7 +112,7 @@ public class LevelPanel extends OriginalPanel {
                     int signsY = signs[i].objectY + signs[i].height;
                     if (y == signsY) {
                         signs[i].draw(g2D);
-                        gf.drawString.drawPercent(this, i);
+                        gf.drawAnything.drawPercent(this, i);
                     }
                 }
             }
@@ -126,7 +126,7 @@ public class LevelPanel extends OriginalPanel {
         // }
 
         // gf.player.draw(g2D);
-        gf.drawString.draw(g2D);
+        gf.drawAnything.draw(g2D);
         gf.ui.draw(g2D);
     }
 
