@@ -35,4 +35,12 @@ public class EntityAction_LVP extends EntityAction {
         }
     }
 
+    public void touchSign(LevelPanel lvp, int i) {
+        if (i != 999) {
+            if (keyH.enterPressed) {
+                lvp.gameState = lvp.watchingSign;
+            }
+        }
+    }
+
 }

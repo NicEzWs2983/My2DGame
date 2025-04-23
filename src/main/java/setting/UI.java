@@ -87,6 +87,27 @@ public class UI {
         }
         if (gameState == cState.playState) {
         }
+        if (gameState == cState.watchingSign) {
+            for (int i = 1; i < gf.numberOfLevel; i++) {
+                if (gf.player.inLevelPanel[i]) {
+                    drawWatchingSign(gf.levelPanel[i]);
+                    break;
+                }
+            }
+
+        }
+    }
+
+    public void drawWatchingSign(LevelPanel lvp) {
+        gf.watchingSign.draw(g2D);
+        g2D.setFont(maruMonica);
+        g2D.setFont(g2D.getFont().deriveFont(Font.BOLD, 192F));
+        g2D.setColor(Color.BLACK);
+
+        String text = lvp.doorPercent[gf.player.signIndex] + "%";
+        int x = getXForCenterText(text);
+        int y = 7 * tileSize + 15;
+        g2D.drawString(text, x, y);
     }
 
     public void drawPauseGame() {

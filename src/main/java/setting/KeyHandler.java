@@ -151,7 +151,19 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_ENTER) {
                 if (gf.player.inGamePanel) {
                 }
+                for (int i = 1; i < gf.numberOfLevel; i++) {
+                    if (gf.player.inLevelPanel[i]) {
+                        lvp[i].gameState = cState.playState;
+                        break;
+                    }
+                }
+            }
+        }
 
+        else if (gameState == cState.watchingSign) {
+            if (code == KeyEvent.VK_ENTER) {
+                if (gf.player.inGamePanel) {
+                }
                 for (int i = 1; i < gf.numberOfLevel; i++) {
                     if (gf.player.inLevelPanel[i]) {
                         lvp[i].gameState = cState.playState;

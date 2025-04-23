@@ -23,7 +23,7 @@ public class Signs extends SuperObject {
         solidArea.x = objectX + 3;
         solidArea.y = objectY + 4;
         solidArea.width = width - 3 * 2;
-        solidArea.height = height - 4;
+        solidArea.height = height + 7;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 

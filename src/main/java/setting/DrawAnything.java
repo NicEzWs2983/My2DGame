@@ -53,7 +53,7 @@ public class DrawAnything extends UI {
 
             text = lvp.doorPercent[0] + "%";
 
-            int x = 3 * tileSize + length / 2 - 1;
+            int x = 3 * tileSize + (tileSize - length) / 2;
             int y = tileSize - 3;
             g2D.drawString(text, x, y);
         }
@@ -62,7 +62,7 @@ public class DrawAnything extends UI {
 
             text = lvp.doorPercent[1] + "%";
 
-            int x = 9 * tileSize + length / 2 - 1;
+            int x = 9 * tileSize + (tileSize - length) / 2;
             int y = tileSize - 3;
 
             g2D.drawString(text, x, y);
@@ -72,7 +72,7 @@ public class DrawAnything extends UI {
 
             text = lvp.doorPercent[2] + "%";
 
-            int x = 14 * tileSize + length / 2 - 1;
+            int x = 14 * tileSize + (tileSize - length) / 2;
             int y = 2 * tileSize - 3;
 
             g2D.drawString(text, x, y);

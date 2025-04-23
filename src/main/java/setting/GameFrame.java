@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import entity.Player;
 
 import entity.action.*;
+import object.*;
 import panel.*;
 import panel.staticPanel.*;
 import setting.collisionChecker.*;
@@ -33,6 +34,7 @@ public class GameFrame extends JFrame {
     public KeyHandler keyH = new KeyHandler(this);
     public UI ui = new UI(this);
     public DrawAnything drawAnything = new DrawAnything(this);
+    public WatchingSign watchingSign = new WatchingSign(this);
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CollisionChecker_GP cCheckerGP = new CollisionChecker_GP(this);
