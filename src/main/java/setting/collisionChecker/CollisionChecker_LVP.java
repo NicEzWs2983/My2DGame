@@ -12,7 +12,7 @@ public class CollisionChecker_LVP {
 
     int tileSize;
     int screenWidth;
-    int MAXLimit = 19;
+    int MAXLimit = 17;
     int minLimit = 3;
 
     LevelPanel nextMap;
@@ -205,6 +205,10 @@ public class CollisionChecker_LVP {
             currentlvp.nextMapDoorCapacity_3 = minLimit;
         }
         // most 95%
+        if (gf.player.level % 5 == 0 && MAXLimit < 19) {
+            MAXLimit++;
+            System.out.println("MAXLimit++");
+        }
         if (currentlvp.nextMapDoorCapacity_1 > MAXLimit) {
             currentlvp.nextMapDoorCapacity_1 = MAXLimit;
         }
@@ -217,17 +221,80 @@ public class CollisionChecker_LVP {
     }
 
     public int[] decreasCapacity(int max, int midle, int min) {
-        max -= 4; // Door -20%
-        midle -= 3; // Door -15%
-        min -= 2; // Door -10%
+        if (gf.player.level < 5) {
+            max = max;
+            midle += 1;
+            min += 2;
+        } else if (gf.player.level < 10) {
+            max -= 1;
+            midle = midle;
+            min += 1;
+        } else if (gf.player.level < 15) {
+            max -= 2;
+            midle -= 1;
+            min = min;
+        } else if (gf.player.level < 20) {
+            max -= 3;
+            midle -= 2;
+            min -= 1;
+        } else {
+            max -= 4; // Door -20%
+            midle -= 3; // Door -15%
+            min -= 2; // Door -10%
+        }
         return new int[] { max, midle, min };
     }
 
     public int[] operateCapacity(int midle, int max, int min) {
-        max -= 2; // Door -10%
-        midle += 1; // Door +5%
-        min += 2; // Door +10%
+        if (gf.player.level < 5) {
+            max += 2;
+            midle += 5;
+            min += 6;
+        } else if (gf.player.level < 10) {
+            max += 1;
+            midle += 4;
+            min += 5;
+        } else if (gf.player.level < 15) {
+            max = max;
+            midle += 3;
+            min += 4;
+        } else if (gf.player.level < 20) {
+            max -= 1;
+            midle += 2;
+            min += 3;
+        } else {
+            max -= 2; // Door -10%
+            midle += 1; // Door +5%
+            min += 2; // Door +10%
+        }
+
         return new int[] { midle, max, min };
+    }
+
+    public int[] increaseCapacity(int min, int max, int midle) {
+        if (gf.player.level < 5) {
+            max += 7;
+            midle += 7;
+            min += 7;
+        } else if (gf.player.level < 10) {
+            max += 6;
+            midle += 6;
+            min += 6;
+        } else if (gf.player.level < 15) {
+            max += 5;
+            midle += 5;
+            min += 5;
+        } else if (gf.player.level < 20) {
+            max += 4;
+            midle += 4;
+            min += 4;
+        } else {
+            max += 3; // Door 1 +15%
+            midle += 3; // Door 2 +15%
+            min += 3; // Door 3 +15%
+        }
+
+        return new int[] { min, max, midle };
     }
 
     public int[] operateCapacity_2(int max, int midle, int min) {
@@ -249,13 +316,6 @@ public class CollisionChecker_LVP {
             min += 3; // +15%
         }
         return new int[] { max, midle, min };
-    }
-
-    public int[] increaseCapacity(int min, int max, int midle) {
-        max += 3; // Door 1 +15%
-        midle += 3; // Door 2 +15%
-        min += 3; // Door 3 +15%
-        return new int[] { min, max, midle };
     }
 
     public void setNextMapDoorCapacity(LevelPanel currentlvp) {
@@ -392,7 +452,7 @@ public class CollisionChecker_LVP {
 
         else if (main == x && main == y) {
             System.out.println("1. x == main == y ");
-            if (main == 19) {
+            if (main == MAXLimit) {
                 main -= 11;
                 x -= 9;
                 y -= 7;

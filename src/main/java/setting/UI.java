@@ -135,6 +135,10 @@ public class UI {
 
     }
 
+    public void drawGuide() {
+
+    }
+
     public void drawSubWindow(int x, int y, int width, int height) {
         Color c = new Color(0, 0, 0, 200);
         g2D.setColor(c);

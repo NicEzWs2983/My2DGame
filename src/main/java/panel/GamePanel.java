@@ -4,6 +4,7 @@ import java.awt.*;
 
 import entity.*;
 import object.*;
+import object.UIimage.*;
 import setting.*;
 import tile.*;
 
@@ -13,9 +14,11 @@ public class GamePanel extends OriginalPanel {
 
     // Entity & Object
 
-    public SuperObject obj[] = new SuperObject[10];
-    public OBJ_Door obj_Door[] = new OBJ_Door[2];
-    public Entity npc[] = new Entity[2];
+    public SuperObject[] obj = new SuperObject[10];
+    public OBJ_Door[] obj_Door = new OBJ_Door[2];
+    public Entity[] npc = new Entity[2];
+    public Keyboard[] keyboard = new Keyboard[5];
+    public DirectionSign[] directionSign = new DirectionSign[4];
 
     public int nextMapDoorCapacity_1 = 15;
     public int nextMapDoorCapacity_2 = 10;
@@ -31,6 +34,7 @@ public class GamePanel extends OriginalPanel {
         gf.aSetter.setPlayer(x, y);
         gf.aSetter.setDoor_GP();
         gf.aSetter.setNPC_GP();
+        gf.aSetter.setKeyboard_GP();
         gf.keyH.setKeyReleased();
 
         gameState = playState;
@@ -111,6 +115,18 @@ public class GamePanel extends OriginalPanel {
             }
 
             gf.ui.draw(g2D);
+        }
+
+        for (int i = 0; i < keyboard.length; i++) {
+            if (keyboard[i] != null) {
+                keyboard[i].draw(g2D);
+            }
+        }
+
+        for (int i = 0; i < directionSign.length; i++) {
+            if (directionSign[i] != null) {
+                directionSign[i].draw(g2D);
+            }
         }
 
         g2D.dispose();

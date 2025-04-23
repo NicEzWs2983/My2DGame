@@ -58,8 +58,8 @@ public class SuperObject {
         g2D.drawImage(image, objectX, objectY, null);
 
         // draw solidArea
-        g2D.setColor(Color.BLUE);
-        g2D.drawRect(solidArea.x, solidArea.y, solidArea.width, solidArea.height);
+        // g2D.setColor(Color.BLUE);
+        // g2D.drawRect(solidArea.x, solidArea.y, solidArea.width, solidArea.height);
 
     }
 }

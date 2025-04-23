@@ -41,10 +41,11 @@ public class Signs extends SuperObject {
         super.draw(g2D);
 
         // draw solidArea2
-        if (solidArea2 != null) {
-            g2D.setColor(Color.RED);
-            g2D.drawRect(solidArea2.x, solidArea2.y, solidArea2.width, solidArea2.height);
-        }
+        // if (solidArea2 != null) {
+        // g2D.setColor(Color.RED);
+        // g2D.drawRect(solidArea2.x, solidArea2.y, solidArea2.width,
+        // solidArea2.height);
+        // }
     }
 
 }
