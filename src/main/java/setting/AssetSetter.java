@@ -216,62 +216,62 @@ public class AssetSetter {
         gp.keyboard[0] = new Keyboard(gf);
         Keyboard keyboard = gp.keyboard[0];
         keyboard.objectX = 11 * tileSize;
-        keyboard.objectY = 2 * tileSize;
+        keyboard.objectY = 2 * tileSize + tileSize / 2;
 
         gp.directionSign[0] = new DirectionSign(gf);
         DirectionSign directionSign = gp.directionSign[0];
         directionSign.name = "UpSign";
         directionSign.imagePath = "/objects/UIimage/UpSign.png";
         directionSign.objectX = 11 * tileSize;
-        directionSign.objectY = 1 * tileSize;
+        directionSign.objectY = 1 * tileSize + tileSize / 2;
         directionSign.loadImage();
 
         // down keyboard
         gp.keyboard[1] = new Keyboard(gf);
         keyboard = gp.keyboard[1];
         keyboard.objectX = 11 * tileSize;
-        keyboard.objectY = 3 * tileSize;
+        keyboard.objectY = 3 * tileSize + tileSize / 2;
 
         gp.directionSign[1] = new DirectionSign(gf);
         directionSign = gp.directionSign[1];
         directionSign.name = "DownSign";
         directionSign.imagePath = "/objects/UIimage/DownSign.png";
         directionSign.objectX = 11 * tileSize;
-        directionSign.objectY = 4 * tileSize;
+        directionSign.objectY = 4 * tileSize + tileSize / 2;
         directionSign.loadImage();
 
         // left keyboard
         gp.keyboard[2] = new Keyboard(gf);
         keyboard = gp.keyboard[2];
         keyboard.objectX = 10 * tileSize;
-        keyboard.objectY = 3 * tileSize;
+        keyboard.objectY = 3 * tileSize + tileSize / 2;
 
         gp.directionSign[2] = new DirectionSign(gf);
         directionSign = gp.directionSign[2];
         directionSign.name = "LeftSign";
         directionSign.imagePath = "/objects/UIimage/LeftSign.png";
         directionSign.objectX = 10 * tileSize;
-        directionSign.objectY = 4 * tileSize;
+        directionSign.objectY = 4 * tileSize + tileSize / 2;
         directionSign.loadImage();
 
         // right keyboard
         gp.keyboard[3] = new Keyboard(gf);
         keyboard = gp.keyboard[3];
         keyboard.objectX = 12 * tileSize;
-        keyboard.objectY = 3 * tileSize;
+        keyboard.objectY = 3 * tileSize + tileSize / 2;
 
         gp.directionSign[3] = new DirectionSign(gf);
         directionSign = gp.directionSign[3];
         directionSign.name = "RightSign";
         directionSign.imagePath = "/objects/UIimage/RightSign.png";
         directionSign.objectX = 12 * tileSize;
-        directionSign.objectY = 4 * tileSize;
+        directionSign.objectY = 4 * tileSize + tileSize / 2;
         directionSign.loadImage();
 
         gp.keyboard[4] = new Keyboard(gf);
         keyboard = gp.keyboard[4];
         keyboard.objectX = 13 * tileSize;
-        keyboard.objectY = 2 * tileSize;
+        keyboard.objectY = 2 * tileSize + tileSize / 2;
         keyboard.height = 2 * tileSize;
         keyboard.loadImage();
     }

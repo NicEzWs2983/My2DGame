@@ -135,8 +135,12 @@ public class UI {
 
     }
 
-    public void drawGuide() {
-
+    public void drawGuideWindow() {
+        Color c = new Color(0, 0, 0, 100);
+        g2D.setColor(c);
+        g2D.fillRoundRect(
+                9 * tileSize + tileSize / 2, 1 * tileSize + tileSize / 2,
+                5 * tileSize, 4 * tileSize, 20, 20);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {

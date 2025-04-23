@@ -117,6 +117,8 @@ public class GamePanel extends OriginalPanel {
             gf.ui.draw(g2D);
         }
 
+        gf.ui.drawGuideWindow();
+
         for (int i = 0; i < keyboard.length; i++) {
             if (keyboard[i] != null) {
                 keyboard[i].draw(g2D);
