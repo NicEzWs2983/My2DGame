@@ -85,6 +85,7 @@ public class LevelPanel extends OriginalPanel {
 
         Graphics2D g2D = (Graphics2D) g;
 
+        gf.drawString.setGraphics2D(g2D);
         tileM.draw(g2D);
 
         for (int i = 0; i < obj.length; i++) {
@@ -99,14 +100,33 @@ public class LevelPanel extends OriginalPanel {
             }
         }
 
-        for (int i = 0; i < signs.length; i++) {
-            if (signs[i] != null) {
-                signs[i].draw(g2D);
+        int y = 0;
+        while (y < screenHeigth) {
+
+            int playerY = gf.player.entityY + gf.player.height;
+            if (y == playerY) {
+                gf.player.draw(g2D);
             }
+            for (int i = 0; i < signs.length; i++) {
+                if (signs[i] != null) {
+                    int signsY = signs[i].objectY + signs[i].height;
+                    if (y == signsY) {
+                        signs[i].draw(g2D);
+                        gf.drawString.drawPercent(this, i);
+                    }
+                }
+            }
+            y++;
         }
 
-        gf.player.draw(g2D);
+        // for (int i = 0; i < signs.length; i++) {
+        // if (signs[i] != null) {
+        // signs[i].draw(g2D);
+        // }
+        // }
 
+        // gf.player.draw(g2D);
+        gf.drawString.draw(g2D);
         gf.ui.draw(g2D);
     }
 

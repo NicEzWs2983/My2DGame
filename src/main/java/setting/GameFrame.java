@@ -32,6 +32,7 @@ public class GameFrame extends JFrame {
     public CheckState cState = new CheckState(this);
     public KeyHandler keyH = new KeyHandler(this);
     public UI ui = new UI(this);
+    public DrawAnything drawString = new DrawAnything(this);
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public CollisionChecker_GP cCheckerGP = new CollisionChecker_GP(this);

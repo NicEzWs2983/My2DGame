@@ -28,7 +28,6 @@ public class TitlePanel extends StaticPanel_O {
             gf.gamePanel.setupGame();
             gf.gamePanel.requestFocusInWindow();
             gf.gamePanel.startGameThread();
-            gf.player.level = 0;
         });
 
     }

@@ -26,4 +26,5 @@ panel\staticPanel\StaticPanel_O.class
 entity\action\EntityAction.class
 entity\NPC_Giant.class
 setting\AssetSetter.class
+object\Signs.class
 object\Key.class
