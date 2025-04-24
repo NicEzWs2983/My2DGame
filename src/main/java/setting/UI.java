@@ -21,10 +21,13 @@ public class UI {
     Graphics2D g2D;
 
     public String message;
+    public int messageX, messageY;
+    public float messageSize;
     public boolean messageOn = false;
     public boolean openDoor = false;
     public String currentDialogue = "";
     public int choiceIndex = 0;
+    public int drawLockCounter = 0;
 
     public UI(GameFrame gf) {
         this.gf = gf;
@@ -54,11 +57,6 @@ public class UI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void showMessage(String text) {
-        message = text;
-        messageOn = true;
     }
 
     public void draw(Graphics2D g2D) {

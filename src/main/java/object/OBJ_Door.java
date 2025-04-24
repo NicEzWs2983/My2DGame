@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import setting.GameFrame;
 
 public class OBJ_Door extends SuperObject {
-    BufferedImage image[] = new BufferedImage[2];
+    BufferedImage[] image = new BufferedImage[2];
 
     public String leftImagePath, rightImagePath;
     public String nOpenLeftImagePath, nOpenRightImagePath;
@@ -54,6 +54,7 @@ public class OBJ_Door extends SuperObject {
         }
     }
 
+    @Override
     public void loadImage() {
         try {
             // image =

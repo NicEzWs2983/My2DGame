@@ -36,6 +36,7 @@ public class LevelPanel extends OriginalPanel {
     }
 
     public void setupGame() {
+        drawLockCounter = 0;
         tileM = new TileManager(this, mapFilePath);
 
         y = tileSize * 10;

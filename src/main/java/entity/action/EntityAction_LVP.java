@@ -14,7 +14,9 @@ public class EntityAction_LVP extends EntityAction {
         if (i != 999) {
             if (lvp.obj[i].name == "Key") {
                 gf.player.numberOfKeys++;
+                gf.drawAnything.showMessage("KEY + 1", lvp.obj[i].objectX, lvp.obj[i].objectY);
                 lvp.obj[i] = null;
+
                 // System.out.println(gf.player.numberOfKeys);
             }
         }

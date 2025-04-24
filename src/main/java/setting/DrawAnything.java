@@ -25,6 +25,10 @@ public class DrawAnything extends UI {
             }
         }
         drawLevel();
+
+        if (messageOn == true) {
+            showNotice();
+        }
     }
 
     public void darkLight() {
@@ -90,6 +94,40 @@ public class DrawAnything extends UI {
         if (level != -1) {
             g2D.drawString("Level " + level, x, y);
         }
+    }
+
+    public void showMessage(String text, int x, int y) {
+        message = text;
+        messageOn = true;
+        messageX = x;
+        messageY = y;
+        messageSize = 20;
+    }
+
+    public void showNotice() {
+        g2D.setFont(unifont);
+        g2D.setFont(g2D.getFont().deriveFont(Font.BOLD));
+        g2D.setColor(Color.YELLOW);
+
+        if (drawLockCounter % 2 == 0) {
+            messageY--;
+        }
+
+        if (drawLockCounter < 40) {
+            messageSize += 0.2;
+        } else {
+            messageSize -= 0.2;
+        }
+
+        g2D.setFont(g2D.getFont().deriveFont(messageSize));
+        g2D.drawString(message, messageX, messageY);
+
+        drawLockCounter++;
+        if (drawLockCounter > 100) {
+            messageOn = false;
+            drawLockCounter = 0;
+        }
+
     }
 
 }

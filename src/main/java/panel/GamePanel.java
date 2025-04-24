@@ -29,6 +29,7 @@ public class GamePanel extends OriginalPanel {
     }
 
     public void setupGame() {
+        drawLockCounter = 0;
         int x = (screenWidth - gf.player.width) / 2;
         int y = tileSize * 8;
         gf.aSetter.setPlayer(x, y);
