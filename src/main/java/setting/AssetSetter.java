@@ -44,7 +44,7 @@ public class AssetSetter {
     }
 
     public void setDoor_GP() {
-        System.out.println("set GP door");
+        // System.out.println("set GP door");
         gp.obj_Door[0] = new OBJ_Door(gf);
         OBJ_Door door = gp.obj_Door[0];
 
@@ -98,7 +98,8 @@ public class AssetSetter {
     public void setDoor_LVP(LevelPanel lvp, int doorCapacity_1, int doorCapacity_2, int doorCapacity_3) {
         values = getRandomValue(null, 20);
         pairValue = getPairValue();
-        System.out.println(Arrays.toString(values));
+
+        // System.out.println(Arrays.toString(values));
 
         // Door 1
         lvp.obj_Door[1] = new OBJ_Door(gf);
@@ -124,7 +125,9 @@ public class AssetSetter {
             door.trueDoor = true;
         }
         lvp.doorPercent[0] = doorCapacity_1 * 100 / 20;
-        System.out.println("Door_1(" + lvp.doorPercent[0] + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
+
+        // System.out.println("Door_1(" + lvp.doorPercent[0] + ") : " + door.trueDoor +
+        // Arrays.toString(door.pairValues));
 
         // Door 2
         lvp.obj_Door[2] = new OBJ_Door(gf);
@@ -160,7 +163,9 @@ public class AssetSetter {
             door.trueDoor = true;
         }
         lvp.doorPercent[1] = doorCapacity_2 * 100 / 20;
-        System.out.println("Door_2(" + lvp.doorPercent[1] + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
+
+        // System.out.println("Door_2(" + lvp.doorPercent[1] + ") : " + door.trueDoor +
+        // Arrays.toString(door.pairValues));
 
         // Door 3
         lvp.obj_Door[3] = new OBJ_Door(gf);
@@ -197,7 +202,9 @@ public class AssetSetter {
             door.trueDoor = true;
         }
         lvp.doorPercent[2] = doorCapacity_3 * 100 / 20;
-        System.out.println("Door_3(" + lvp.doorPercent[2] + ") : " + door.trueDoor + Arrays.toString(door.pairValues));
+
+        // System.out.println("Door_3(" + lvp.doorPercent[2] + ") : " + door.trueDoor +
+        // Arrays.toString(door.pairValues));
 
     }
 

@@ -84,6 +84,7 @@ public class OriginalPanel extends JPanel implements Runnable {
                 timer = 0;
             }
         }
+        // System.out.println("Panel stop");
     }
 
     public void update() {

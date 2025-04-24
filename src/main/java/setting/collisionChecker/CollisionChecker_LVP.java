@@ -207,7 +207,7 @@ public class CollisionChecker_LVP {
         // most 95%
         if (gf.player.level % 5 == 0 && MAXLimit < 19) {
             MAXLimit++;
-            System.out.println("MAXLimit++");
+            // System.out.println("MAXLimit++");
         }
         if (currentlvp.nextMapDoorCapacity_1 > MAXLimit) {
             currentlvp.nextMapDoorCapacity_1 = MAXLimit;
@@ -298,19 +298,19 @@ public class CollisionChecker_LVP {
     }
 
     public int[] operateCapacity_2(int max, int midle, int min) {
-        System.out.println(max + " , " + midle + " , " + min);
+        // System.out.println(max + " , " + midle + " , " + min);
         if (midle > 10) {
-            System.out.println(midle + " > 10");
+            // System.out.println(midle + " > 10");
             max -= 3; // -15%
             midle -= 2; // -10%
             min += 2; // +10%
         } else if (midle == 10) {
-            System.out.println(midle + " == 10");
+            // System.out.println(midle + " == 10");
             max -= 2; // -10%
             midle -= 1; // -5%
             min += 2; // +10%
         } else if (midle < 10) {
-            System.out.println(midle + " < 10");
+            // System.out.println(midle + " < 10");
             max -= 1; // -5%
             midle += 3; // +15%
             min += 3; // +15%
@@ -388,7 +388,7 @@ public class CollisionChecker_LVP {
     public int[] changeNextDoorCapacity(LevelPanel currentlvp, int main, int x, int y) {
         int[] values = new int[3];
         if (x > y) {
-            System.out.println("1. x > y");
+            // System.out.println("1. x > y");
 
             if (main > x) {
                 values = decreasCapacity(main, x, y);
@@ -406,13 +406,13 @@ public class CollisionChecker_LVP {
 
             if (main == y) {
                 values = operateCapacity_2(x, main, y);
-                System.out.println(Arrays.toString(values));
+                // System.out.println(Arrays.toString(values));
                 x = values[0];
                 main = values[1];
                 y = values[2];
             } else if (main == x) {
                 values = operateCapacity_2(main, x, y);
-                System.out.println(Arrays.toString(values));
+                // System.out.println(Arrays.toString(values));
                 main = values[0];
                 x = values[1];
                 y = values[2];
@@ -420,7 +420,7 @@ public class CollisionChecker_LVP {
         }
 
         else if (y > x) {
-            System.out.println("1. y > x");
+            // System.out.println("1. y > x");
             if (main > y) {
                 values = decreasCapacity(main, y, x);
             } else if (y > main && main > x) {
@@ -437,13 +437,13 @@ public class CollisionChecker_LVP {
 
             if (main == y) {
                 values = operateCapacity_2(main, y, x);
-                System.out.println(Arrays.toString(values));
+                // System.out.println(Arrays.toString(values));
                 main = values[0];
                 y = values[1];
                 x = values[2];
             } else if (main == x) {
                 values = operateCapacity_2(y, main, x);
-                System.out.println(Arrays.toString(values));
+                // System.out.println(Arrays.toString(values));
                 y = values[0];
                 main = values[1];
                 x = values[2];
@@ -451,7 +451,7 @@ public class CollisionChecker_LVP {
         }
 
         else if (main == x && main == y) {
-            System.out.println("1. x == main == y ");
+            // System.out.println("1. x == main == y ");
             if (main == MAXLimit) {
                 main -= 11;
                 x -= 9;
@@ -477,7 +477,7 @@ public class CollisionChecker_LVP {
         }
 
         else if (x == y) {
-            System.out.println("1. x == y");
+            // System.out.println("1. x == y");
             if (main > x) {
                 values = operateCapacity_2(main, x, y);
                 main = values[0];

@@ -50,7 +50,7 @@ public class LevelPanel extends OriginalPanel {
     public void run() {
 
         super.run();
-        System.out.println("GamePanel stop");
+
     }
 
     @Override

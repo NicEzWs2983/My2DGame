@@ -45,7 +45,7 @@ public class GamePanel extends OriginalPanel {
     public void run() {
 
         super.run();
-        System.out.println("GamePanel stop");
+        // System.out.println("GamePanel stop");
     }
 
     @Override

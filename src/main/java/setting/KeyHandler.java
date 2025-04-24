@@ -176,7 +176,7 @@ public class KeyHandler implements KeyListener {
     }
 
     public void openDoor_GP() {
-        System.out.println(gf.player.doorIndex);
+        // System.out.println(gf.player.doorIndex);
         gp.obj_Door[gf.player.doorIndex].isOpen = true;
         gp.obj_Door[gf.player.doorIndex].setDoorImage();
         gp.gameState = cState.playState;

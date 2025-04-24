@@ -15,7 +15,7 @@ public class EntityAction_LVP extends EntityAction {
             if (lvp.obj[i].name == "Key") {
                 gf.player.numberOfKeys++;
                 lvp.obj[i] = null;
-                System.out.println(gf.player.numberOfKeys);
+                // System.out.println(gf.player.numberOfKeys);
             }
         }
     }
