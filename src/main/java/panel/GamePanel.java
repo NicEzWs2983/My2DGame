@@ -117,21 +117,12 @@ public class GamePanel extends OriginalPanel {
             gf.ui.draw(g2D);
         }
 
-        gf.ui.drawGuideWindow();
-
-        for (int i = 0; i < keyboard.length; i++) {
-            if (keyboard[i] != null) {
-                keyboard[i].draw(g2D);
-            }
-        }
-
-        for (int i = 0; i < directionSign.length; i++) {
-            if (directionSign[i] != null) {
-                directionSign[i].draw(g2D);
-            }
+        if (drawLockCounter < 180) {
+            gf.ui.drawGuideWindow_GP();
         }
 
         g2D.dispose();
+        drawLockCounter++;
     }
 
 }

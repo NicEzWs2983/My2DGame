@@ -275,11 +275,12 @@ public class AssetSetter {
         directionSign.objectY = 4 * tileSize + tileSize / 2;
         directionSign.loadImage();
 
+        // enter keyboard
         gp.keyboard[4] = new Keyboard(gf);
         keyboard = gp.keyboard[4];
         keyboard.objectX = 13 * tileSize;
-        keyboard.objectY = 2 * tileSize + tileSize / 2;
-        keyboard.height = 2 * tileSize;
+        keyboard.objectY = 2 * tileSize + tileSize / 4;
+        keyboard.height = 2 * tileSize + tileSize / 2;
         keyboard.loadImage();
     }
 

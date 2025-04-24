@@ -11,6 +11,7 @@ public class OriginalPanel extends JPanel implements Runnable {
     public GameFrame gf;
 
     int FPS = 60;
+    int drawLockCounter = 0;
 
     final int originalTileSize = 16;
     final int scale = 3;

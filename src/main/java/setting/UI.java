@@ -135,12 +135,75 @@ public class UI {
 
     }
 
-    public void drawGuideWindow() {
+    public void drawGuideWindow_GP() {
         Color c = new Color(0, 0, 0, 100);
         g2D.setColor(c);
         g2D.fillRoundRect(
                 9 * tileSize + tileSize / 2, 1 * tileSize + tileSize / 2,
                 5 * tileSize, 4 * tileSize, 20, 20);
+
+        for (int i = 0; i < gf.gamePanel.keyboard.length; i++) {
+            if (gf.gamePanel.keyboard[i] != null) {
+                gf.gamePanel.keyboard[i].draw(g2D);
+            }
+        }
+        for (int i = 0; i < gf.gamePanel.directionSign.length; i++) {
+            if (gf.gamePanel.directionSign[i] != null) {
+                gf.gamePanel.directionSign[i].draw(g2D);
+            }
+        }
+
+        g2D.setFont(unifont);
+        g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 20F));
+        c = new Color(255, 255, 255);
+        g2D.setColor(c);
+        String text = "W";
+        int length = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth();
+        int x = 11 * tileSize + (tileSize - length) / 2 - 2;
+        int y = 3 * tileSize + 1;
+        g2D.drawString(text, x, y);
+
+        text = "S";
+        y += tileSize;
+        g2D.drawString(text, x, y);
+
+        text = "A";
+        x -= tileSize;
+        g2D.drawString(text, x, y);
+
+        text = "D";
+        x += 2 * tileSize;
+        g2D.drawString(text, x, y);
+
+        // draw ENTER
+        g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 9F));
+        text = "E";
+        x += tileSize;
+        y -= tileSize;
+        x += 5;
+        y -= 6;
+        g2D.drawString(text, x, y);
+
+        int textHeight = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getHeight();
+        text = "N";
+        x -= 1;
+        y += textHeight;
+        g2D.drawString(text, x, y);
+
+        text = "T";
+        x -= 1;
+        y += textHeight;
+        g2D.drawString(text, x, y);
+
+        text = "E";
+        x -= 1;
+        y += textHeight;
+        g2D.drawString(text, x, y);
+
+        text = "R";
+        x -= 1;
+        y += textHeight;
+        g2D.drawString(text, x, y);
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
