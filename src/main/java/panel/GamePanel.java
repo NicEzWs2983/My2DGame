@@ -26,6 +26,7 @@ public class GamePanel extends OriginalPanel {
 
     public GamePanel(GameFrame gf) {
         super(gf);
+        gameState = previousMapState;
     }
 
     public void setupGame() {

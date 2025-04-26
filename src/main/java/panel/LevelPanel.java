@@ -72,7 +72,7 @@ public class LevelPanel extends OriginalPanel {
         }
         if (gameState == offLimitsState) {
         }
-        if (gameState == watchingSign) {
+        if (gameState == watchingSignState) {
         }
 
         /*----------------------------------*/

@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import button.SelectButton;
 import entity.Player;
 
 import entity.action.*;
@@ -15,6 +16,9 @@ import panel.staticPanel.*;
 import setting.collisionChecker.*;
 
 public class GameFrame extends JFrame {
+    public GetText getText = new GetText(this);
+    public SelectButton selectButton = new SelectButton(this);
+
     public TitlePanel titlePanel = new TitlePanel(this);
     public GamePanel gamePanel = new GamePanel(this);
     public GameOverPanel gameOverPanel = new GameOverPanel(this);

@@ -160,7 +160,7 @@ public class KeyHandler implements KeyListener {
             }
         }
 
-        else if (gameState == cState.watchingSign) {
+        else if (gameState == cState.watchingSignState) {
             if (code == KeyEvent.VK_ENTER) {
                 if (gf.player.inGamePanel) {
                 }

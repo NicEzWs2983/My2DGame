@@ -27,15 +27,13 @@ public class GameOverPanel extends StaticPanel_O {
 
         restartButton.addActionListener(e -> {
             gf.layout.show(gf.cardPanel, gf.title);
+            gameState = nextMapState;
         });
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        Graphics2D g2D = (Graphics2D) g;
-        this.g2D = g2D;
 
         g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         drawGameOverScreen();

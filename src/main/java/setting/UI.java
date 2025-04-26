@@ -85,7 +85,7 @@ public class UI {
         }
         if (gameState == cState.playState) {
         }
-        if (gameState == cState.watchingSign) {
+        if (gameState == cState.watchingSignState) {
             for (int i = 1; i < gf.numberOfLevel; i++) {
                 if (gf.player.inLevelPanel[i]) {
                     drawWatchingSign(gf.levelPanel[i]);
