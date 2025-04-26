@@ -1,11 +1,11 @@
 package setting;
 
-import java.awt.CardLayout;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import button.SelectButton;
+import button.*;
 import entity.Player;
 
 import entity.action.*;
@@ -17,7 +17,8 @@ import setting.collisionChecker.*;
 
 public class GameFrame extends JFrame {
     public GetText getText = new GetText(this);
-    public SelectButton selectButton = new SelectButton(this);
+    public SelectButton selectButton = new SelectButton();
+    public OptionPanel optionPanel = new OptionPanel(this);
 
     public TitlePanel titlePanel = new TitlePanel(this);
     public GamePanel gamePanel = new GamePanel(this);

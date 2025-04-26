@@ -22,4 +22,5 @@ public class StartButton extends JButton {
 
         this.setVisible(true);
     }
+
 }

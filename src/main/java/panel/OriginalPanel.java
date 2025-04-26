@@ -34,6 +34,7 @@ public class OriginalPanel extends JPanel implements Runnable {
     public final int offLimitsState = 5;
     public final int watchingSignState = 6;
     public final int selectLanguageState = 7;
+    public final int optionUIState = 8;
 
     public final int previousMapState = 998;
     public final int nextMapState = 999;
