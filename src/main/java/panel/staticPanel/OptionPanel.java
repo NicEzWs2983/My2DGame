@@ -20,7 +20,7 @@ public class OptionPanel extends StaticPanel_O {
     public OptionPanel(GameFrame gf) {
         super(gf);
         this.setAutoscrolls(true);
-        this.setBackground(new Color(64, 64, 64));
+        this.setBackground(new Color(155, 173, 183));
 
         btnSetter();
 
@@ -62,14 +62,15 @@ public class OptionPanel extends StaticPanel_O {
         mbtns[0] = new MineButton();
         MineButton btn = mbtns[0];
 
-        int width = 30;
-        int height = 30;
+        int width = 35;
+        int height = 35;
         int x = tileSize / 4;
         int y = (tileSize - height) / 2;
         int textX = 5;
         int textY = 25;
         int size = 30;
         int style = Font.BOLD;
+        Color c;
 
         btn.setBounds(x, y, width, height);
         btn.setText("x");
@@ -88,14 +89,20 @@ public class OptionPanel extends StaticPanel_O {
         height = tileSize;
         x += tileSize / 2;
         y = tileSize * 5 / 4;
-        size = 40;
+        size = 30;
 
         btn.setBounds(x, y, width, height);
-        btn.setText(Color.BLACK, style, size, 0, 0);
-        btn.backgroundColor = Color.WHITE;
-        btn.boundColor = Color.BLACK;
+        btn.setText(Color.BLACK, style, size, 15, 15);
+        btn.exitedStroke = new BasicStroke(3);
+        btn.enteredStroke = new BasicStroke(4);
 
-        textY = btn.getHeight() / 2 + 15;
+        c = new Color(205, 145, 83);
+        btn.backgroundColor = c;
+
+        c = new Color(168, 119, 68);
+        btn.boundColor = c;
+
+        textY = btn.getHeight() / 2 + 10;
 
         // btn.textX = textX;
         btn.textY = textY;
@@ -109,7 +116,7 @@ public class OptionPanel extends StaticPanel_O {
         btn = lbtns[0];
 
         width = screenWidth - tileSize * 7 - tileSize / 2;
-        height = tileSize / 2;
+        height = tileSize * 2 / 3;
         x = tileSize * 6 + tileSize * 3 / 4;
         size = 20;
 
@@ -120,7 +127,7 @@ public class OptionPanel extends StaticPanel_O {
         btn.backgroundColor = Color.WHITE;
         btn.boundColor = Color.BLACK;
 
-        textY -= 20;
+        textY -= 10;
 
         btn.textY = textY;
         btn.textX = textX;
@@ -133,7 +140,7 @@ public class OptionPanel extends StaticPanel_O {
         lbtns[1] = new MineButton();
         btn = lbtns[1];
 
-        y += height + tileSize / 8;
+        y += height;
 
         btn.setBounds(x, y, width, height);
         btn.setText("中文(Traditional)");
@@ -177,7 +184,7 @@ public class OptionPanel extends StaticPanel_O {
     }
 
     public void drawFrame(Graphics2D g2D, int x, int y, int width, int height) {
-        g2D.setColor(new Color(50, 50, 50));
+        g2D.setColor(new Color(192, 199, 214, 200));
         g2D.fillRoundRect(x, y, width, height, 0, 0);
 
         g2D.setColor(Color.WHITE);

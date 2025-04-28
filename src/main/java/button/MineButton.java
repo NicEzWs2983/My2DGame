@@ -19,7 +19,11 @@ public class MineButton extends JComponent implements MouseListener, ActionListe
     public Color fontColor = Color.WHITE;
     public Color boundColor = Color.WHITE;
     public Color backgroundColor = null;
-    public BasicStroke basicStroke = new BasicStroke(2);
+
+    public BasicStroke enteredStroke = new BasicStroke(3);
+    public BasicStroke exitedStroke = new BasicStroke(2);
+    public BasicStroke basicStroke = exitedStroke;
+
     public float size = 30;
     public int style = Font.PLAIN;
     public int arcWidth = 0;
@@ -72,12 +76,12 @@ public class MineButton extends JComponent implements MouseListener, ActionListe
 
         if (backgroundColor != null) {
             g2D.setColor(backgroundColor);
-            g2D.fillRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);
+            g2D.fillRoundRect(3, 3, getWidth() - 6, getHeight() - 6, arcWidth, arcHeight);
         }
 
         g2D.setColor(boundColor);
         g2D.setStroke(basicStroke);
-        g2D.drawRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);
+        g2D.drawRoundRect(3, 3, getWidth() - 6, getHeight() - 6, arcWidth, arcHeight);
 
         g2D.setFont(font);
 
@@ -120,14 +124,14 @@ public class MineButton extends JComponent implements MouseListener, ActionListe
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        basicStroke = new BasicStroke(3);
+        basicStroke = enteredStroke;
         // boundColor = Color.RED;
         repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        basicStroke = new BasicStroke(2);
+        basicStroke = exitedStroke;
         // boundColor = Color.WHITE;
         repaint();
     }
