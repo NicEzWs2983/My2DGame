@@ -17,7 +17,6 @@ import setting.collisionChecker.*;
 
 public class GameFrame extends JFrame {
     public GetText getText = new GetText(this);
-    public SelectButton selectButton = new SelectButton();
     public OptionPanel optionPanel = new OptionPanel(this);
 
     public TitlePanel titlePanel = new TitlePanel(this);
@@ -59,6 +58,7 @@ public class GameFrame extends JFrame {
     // public final String lv2 = "lv2";
     // public final String lv3 = "lv3";
     public final String gameOver = "game over";
+    public final String option = "option";
 
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,6 +78,7 @@ public class GameFrame extends JFrame {
         // cardPanel.add(level3Panel, lv3);
 
         cardPanel.add(gameOverPanel, gameOver);
+        cardPanel.add(optionPanel, option);
 
         layout.show(cardPanel, title);
 

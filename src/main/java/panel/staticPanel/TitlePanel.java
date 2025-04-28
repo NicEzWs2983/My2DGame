@@ -11,14 +11,10 @@ import setting.GameFrame;
 
 public class TitlePanel extends StaticPanel_O {
     StartButton startButton = new StartButton(this);
-    SelectButton selectButton;
-
-    OptionPanel op;
+    MineButton selectButton = new MineButton();
 
     public TitlePanel(GameFrame gf) {
         super(gf);
-        selectButton = gf.selectButton;
-        op = gf.optionPanel;
 
         // start btn
         Font btFont = maruMonica.deriveFont(Font.PLAIN, 50F);
@@ -33,19 +29,20 @@ public class TitlePanel extends StaticPanel_O {
         y = screenHeigth - 2 * tileSize;
         selectButton.setBounds(x, y, tileSize * 5 / 2, tileSize * 3 / 2);
         selectButton.setText(gf.getText.option[0][0], Color.GREEN, maruMonica, Font.PLAIN, 30F, 30, 30);
-        selectButton.og = this;
 
         this.add(startButton);
         this.add(selectButton);
-        this.add(op);
-
-        op.setVisible(true);
 
         startButton.addActionListener(e -> {
             gf.layout.show(gf.cardPanel, gf.game);
             gf.gamePanel.setupGame();
             gf.gamePanel.requestFocusInWindow();
             gf.gamePanel.startGameThread();
+        });
+
+        selectButton.setOnClick(() -> {
+            gf.optionPanel.setCloseBTN_OnClick(gf.title);
+            gf.layout.show(gf.cardPanel, gf.option);
         });
 
     }
@@ -56,15 +53,10 @@ public class TitlePanel extends StaticPanel_O {
         super.paintComponent(g);
         g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        if (gameState == optionUIState) {
-            this.setBackground(Color.GRAY);
-            startButton.setVisible(false);
-            selectButton.setVisible(false);
-            op.setVisible(true);
-            repaint();
-        } else {
-            drawTitleScreen();
-        }
+        drawTitleScreen();
+        startButton.setVisible(true);
+        selectButton.setVisible(true);
+        repaint();
 
     }
 

@@ -1,12 +1,14 @@
 package button;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
 
-public class MineButton extends JComponent implements MouseListener {
+public class MineButton extends JComponent implements MouseListener, ActionListener {
 
     public Graphics2D g2D;
 
@@ -16,14 +18,23 @@ public class MineButton extends JComponent implements MouseListener {
     public Font font;
     public Color fontColor = Color.WHITE;
     public Color boundColor = Color.WHITE;
-    public BasicStroke basicStroke = new BasicStroke(1);
+    public Color backgroundColor = null;
+    public BasicStroke basicStroke = new BasicStroke(2);
     public float size = 30;
     public int style = Font.PLAIN;
     public int arcWidth = 0;
     public int arcHeight = 0;
+    public int textX = 99999, textY = 99999;
+
+    private OnClickListener onClickListener;
 
     public MineButton() {
         setDefault();
+    }
+
+    public void setOnClick(OnClickListener listener) {
+        // 把 onClickListener 替換成有功能的
+        this.onClickListener = listener;
     }
 
     public void setDefault() {
@@ -48,14 +59,25 @@ public class MineButton extends JComponent implements MouseListener {
 
         Graphics2D g2D = (Graphics2D) g;
 
+        this.g2D = g2D;
+
+        if (backgroundColor != null) {
+            g2D.setColor(backgroundColor);
+            g2D.fillRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);
+        }
+
         g2D.setColor(boundColor);
         g2D.setStroke(basicStroke);
-        g2D.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, arcWidth, arcHeight);
+        g2D.drawRoundRect(0, 0, getWidth(), getHeight(), arcWidth, arcHeight);
         g2D.setFont(font);
         g2D.setFont(g2D.getFont().deriveFont(style, size));
         g2D.setColor(fontColor);
-        int textX = (getWidth() - (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth()) / 2;
-        int textY = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getHeight() + getHeight() / 5;
+        if (textX == 99999) {
+            textX = (getWidth() - (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth()) / 2;
+        }
+        if (textY == 99999) {
+            textY = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getHeight() + getHeight() / 5;
+        }
         g2D.drawString(text, textX, textY);
 
         if (pressed) {
@@ -66,6 +88,9 @@ public class MineButton extends JComponent implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if (onClickListener != null) {
+            onClickListener.OnClick();
+        }
     }
 
     @Override
@@ -89,9 +114,17 @@ public class MineButton extends JComponent implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
-        basicStroke = new BasicStroke(1);
+        basicStroke = new BasicStroke(2);
         // boundColor = Color.WHITE;
         repaint();
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
+    @FunctionalInterface
+    public interface OnClickListener {
+        void OnClick();
+    }
 }
