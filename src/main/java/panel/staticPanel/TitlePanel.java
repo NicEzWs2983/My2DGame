@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.RenderingHints;
 
 import button.*;
-import button.StartButton;
 import setting.GameFrame;
 
 public class TitlePanel extends StaticPanel_O {
@@ -15,7 +14,22 @@ public class TitlePanel extends StaticPanel_O {
 
     public TitlePanel(GameFrame gf) {
         super(gf);
+        gameState = playState;
 
+        btnSetter();
+
+        this.add(startButton);
+        this.add(selectButton);
+
+    }
+
+    @Override
+    public void checkLanguage() {
+        selectButton.setLanguage(gf.getText.option); // Option
+    }
+
+    @Override
+    public void btnSetter() {
         // start btn
         Font btFont = maruMonica.deriveFont(Font.PLAIN, 50F);
         int x = (screenWidth - startButton.getWidth()) / 2;
@@ -24,27 +38,26 @@ public class TitlePanel extends StaticPanel_O {
         startButton.setForeground(Color.WHITE);
         startButton.setLocation(x, y);
 
-        // select btn
-        x = screenWidth - 3 * tileSize;
-        y = screenHeigth - 2 * tileSize;
-        selectButton.setBounds(x, y, tileSize * 5 / 2, tileSize * 3 / 2);
-        selectButton.setText(gf.getText.option[0][0], Color.GREEN, maruMonica, Font.PLAIN, 30F, 30, 30);
-
-        this.add(startButton);
-        this.add(selectButton);
-
         startButton.addActionListener(e -> {
             gf.layout.show(gf.cardPanel, gf.game);
             gf.gamePanel.setupGame();
             gf.gamePanel.requestFocusInWindow();
             gf.gamePanel.startGameThread();
+            gameState = nextMapState;
         });
+
+        // select btn
+        x = screenWidth - 3 * tileSize;
+        y = screenHeigth - 2 * tileSize;
+        selectButton.setBounds(x, y, tileSize * 5 / 2, tileSize * 3 / 2);
+        selectButton.setText(Color.GREEN, maruMonica, Font.PLAIN, 30F, 30, 30);
 
         selectButton.setOnClick(() -> {
             gf.optionPanel.setCloseBTN_OnClick(gf.title);
             gf.layout.show(gf.cardPanel, gf.option);
+            gf.optionPanel.gameState = gf.optionPanel.playState;
+            gf.optionPanel.startGameThread();
         });
-
     }
 
     @Override
@@ -65,7 +78,7 @@ public class TitlePanel extends StaticPanel_O {
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 75F));
         g2D.setColor(Color.RED);
 
-        String titleText = gf.getText.titleName[0][0];
+        String titleText = gf.getText.titleName[0][0]; // The Door of Destiny
         int x = getXForCenterText(titleText);
         int y = tileSize * 3;
 

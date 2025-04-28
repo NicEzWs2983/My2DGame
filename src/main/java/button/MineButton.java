@@ -43,14 +43,23 @@ public class MineButton extends JComponent implements MouseListener, ActionListe
         this.setLayout(null);
     }
 
-    public void setText(String text, Color fontColor, Font font, int style, float size, int arcWidth, int arcHeight) {
-        this.text = text;
+    public void setText(Color fontColor, Font font, int style, float size, int arcWidth, int arcHeight) {
         this.fontColor = fontColor;
         this.font = font;
         this.style = style;
         this.size = size;
         this.arcWidth = arcWidth;
         this.arcHeight = arcHeight;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setLanguage(String[][] text) {
+        this.text = text[0][0];
+        this.textX = 99999;
+        repaint();
     }
 
     @Override
@@ -72,12 +81,14 @@ public class MineButton extends JComponent implements MouseListener, ActionListe
         g2D.setFont(font);
         g2D.setFont(g2D.getFont().deriveFont(style, size));
         g2D.setColor(fontColor);
+
         if (textX == 99999) {
             textX = (getWidth() - (int) g2D.getFontMetrics().getStringBounds(text, g2D).getWidth()) / 2;
         }
         if (textY == 99999) {
             textY = (int) g2D.getFontMetrics().getStringBounds(text, g2D).getHeight() + getHeight() / 5;
         }
+
         g2D.drawString(text, textX, textY);
 
         if (pressed) {

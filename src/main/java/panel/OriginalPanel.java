@@ -91,5 +91,9 @@ public class OriginalPanel extends JPanel implements Runnable {
     }
 
     public void update() {
+        checkLanguage();
+    }
+
+    public void checkLanguage() {
     }
 }

@@ -91,6 +91,8 @@ public class GetText {
 
                 notOpenDoor[0] = notOpenDoor[language];
 
+                level[0] = level[language];
+
                 dialogues[0] = dialogues[language];
 
                 key[0] = key[language];

@@ -92,7 +92,7 @@ public class DrawAnything extends UI {
         g2D.setFont(g2D.getFont().deriveFont(Font.BOLD, 30F));
         g2D.setColor(Color.magenta);
         if (level != -1) {
-            g2D.drawString("Level " + level, x, y);
+            g2D.drawString(gf.getText.level[0][0] + level, x, y); // Level
         }
     }
 

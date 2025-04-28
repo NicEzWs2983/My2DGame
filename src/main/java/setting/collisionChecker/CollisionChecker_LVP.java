@@ -383,6 +383,8 @@ public class CollisionChecker_LVP {
                 gf.player.inLevelPanel[i] = false;
             }
         }
+        gf.gameOverPanel.gameState = gf.gameOverPanel.playState;
+        gf.gameOverPanel.startGameThread();
     }
 
     public int[] changeNextDoorCapacity(LevelPanel currentlvp, int main, int x, int y) {

@@ -16,6 +16,7 @@ public class CheckState {
     public int openDoorState;
     public int offLimitsState;
     public int watchingSignState;
+    public int optionUIState;
 
     public int previousMapState;
     public int nextMapState;
@@ -35,6 +36,7 @@ public class CheckState {
         this.openDoorState = gp.openDoorState;
         this.offLimitsState = gp.offLimitsState;
         this.watchingSignState = gp.watchingSignState;
+        this.optionUIState = gp.optionUIState;
 
         this.previousMapState = gp.previousMapState;
         this.nextMapState = gp.nextMapState;

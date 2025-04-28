@@ -44,6 +44,7 @@ public class GameOverPanel extends StaticPanel_O {
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 80F));
         g2D.setColor(Color.RED);
 
+        // gf.getText.setCompletedLevel();
         String GameOverText[] = { "Game Over", "You've completed " + (gf.player.level - 1) + " levels" };
         int x = getXForCenterText(GameOverText[0]);
         int y = tileSize * 3;

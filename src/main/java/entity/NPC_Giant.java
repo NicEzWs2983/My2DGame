@@ -12,7 +12,6 @@ public class NPC_Giant extends Entity {
 
         setDefaultValues();
         getNPCImage();
-        setDialogue();
     }
 
     public void getNPCImage() {
@@ -52,9 +51,13 @@ public class NPC_Giant extends Entity {
         nextFrameSecond = 15;
     }
 
+    @Override
     public void setDialogue() {
-        dialogues[0] = "Hello! Are you a noob?";
-        dialogues[1] = "I'm just a giant, nothing more.";
+        for (int i = 0; i < gf.getText.dialogues[0].length; i++) {
+            dialogues[i] = gf.getText.dialogues[0][i];
+            // Hello! Are you a noob?
+            // I'm just a giant, nothing more
+        }
     }
 
     public void setAction() {

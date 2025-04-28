@@ -118,6 +118,7 @@ public class Entity {
 
         getSolidAreaXY();
         setAction();
+        setDialogue();
 
         collisionOn = false;
         cChecker.updateSoildArea(this, solidAreaMoveSize);
@@ -275,4 +276,6 @@ public class Entity {
         solidArea.y = entityY + solidAreaDefaultY;
     }
 
+    public void setDialogue() {
+    }
 }

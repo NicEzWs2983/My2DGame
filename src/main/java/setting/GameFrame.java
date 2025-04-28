@@ -84,6 +84,8 @@ public class GameFrame extends JFrame {
 
         this.pack();
 
+        titlePanel.startGameThread();
+
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 

@@ -42,6 +42,9 @@ public class StaticPanel_O extends OriginalPanel {
         }
     }
 
+    public void btnSetter() {
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

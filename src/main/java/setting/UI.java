@@ -15,9 +15,10 @@ public class UI {
     GameFrame gf;
 
     CheckState cState;
+    GetText getText;
 
     int tileSize, screenWidth, screenHeigth, gameState;
-    Font maruMonica, unifont, HWMCT, Zomzi;
+    Font defaultFont, maruMonica, unifont, HWMCT, Zomzi;
     Graphics2D g2D;
 
     public String message;
@@ -33,6 +34,7 @@ public class UI {
         this.gf = gf;
 
         this.cState = gf.cState;
+        this.getText = gf.getText;
 
         this.tileSize = gf.gamePanel.tileSize;
         this.screenWidth = gf.gamePanel.screenWidth;
@@ -110,7 +112,7 @@ public class UI {
 
     public void drawPauseGame() {
         g2D.setFont(g2D.getFont().deriveFont(Font.BOLD, 80F));
-        String text = "PAUSE";
+        String text = getText.pause[0][0]; // PAUSE
         int x = getXForCenterText(text);
         int y = screenHeigth / 2;
         g2D.drawString(text, x, y);
@@ -222,7 +224,7 @@ public class UI {
         int height = tileSize * 2;
         drawOpenDoorSubWindow(x, y, width, height);
 
-        String text = "Make sure you really want to go in.";
+        String text = getText.askOpenDoor[0][0]; // Make sure you really want to go in.
 
         x += tileSize / 2;
         y += tileSize;
@@ -235,14 +237,14 @@ public class UI {
             g2D.drawString(">", x, y);
 
         x += tileSize / 3;
-        g2D.drawString("Yes!", x, y);
+        g2D.drawString(getText.yes[0][0], x, y); // Yes!
 
         x += (int) g2D.getFontMetrics().getStringBounds("Yes", g2D).getWidth() + tileSize;
         if (choiceIndex == 1)
             g2D.drawString(">", x, y);
 
         x += tileSize / 3;
-        g2D.drawString("No!", x, y);
+        g2D.drawString(getText.no[0][0], x, y); // No!
     }
 
     public void drawOffLimits() {
@@ -257,9 +259,9 @@ public class UI {
         for (int i = 1; i < gf.numberOfLevel; i++) {
             if (gf.player.inLevelPanel[i]) {
                 if (gf.player.doorIndex == 0) {
-                    text = "You are not allowed to return there.";
+                    text = getText.notOpenDoor[0][0]; // You are not allowed to return there.
                 } else {
-                    text = "You don't have enough keys to open this door.";
+                    text = getText.notOpenDoor[0][1]; // You don't have enough keys to open this door.
                 }
                 break;
             }

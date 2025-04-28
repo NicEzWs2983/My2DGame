@@ -10,8 +10,12 @@ import button.MineButton;
 import setting.GameFrame;
 
 public class OptionPanel extends StaticPanel_O {
+
     MineButton[] mbtns = new MineButton[10];
-    MineButton[] sbtns = new MineButton[10];
+    // language btn
+    MineButton[] lbtns = new MineButton[10];
+
+    int settingIndex = 999;
 
     public OptionPanel(GameFrame gf) {
         super(gf);
@@ -20,11 +24,39 @@ public class OptionPanel extends StaticPanel_O {
 
         btnSetter();
 
-        this.add(mbtns[0]);
-        this.add(mbtns[1]);
+        for (int i = 0; i < mbtns.length; i++) {
+            if (mbtns[i] != null) {
+                this.add(mbtns[i]);
+            }
+        }
+
+        for (int i = 0; i < lbtns.length; i++) {
+            if (lbtns[i] != null) {
+                this.add(lbtns[i]);
+                lbtns[i].setVisible(false);
+            }
+        }
 
     }
 
+    @Override
+    public void update() {
+        super.update();
+        if (settingIndex == 1) {
+            for (int i = 0; i < lbtns.length; i++) {
+                if (lbtns[i] != null) {
+                    lbtns[i].setVisible(true);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void checkLanguage() {
+        mbtns[1].setLanguage(gf.getText.selectLanguage); // Language
+    }
+
+    @Override
     public void btnSetter() {
         // close btn
         mbtns[0] = new MineButton();
@@ -34,11 +66,18 @@ public class OptionPanel extends StaticPanel_O {
         int height = 30;
         int x = tileSize / 4;
         int y = (tileSize - height) / 2;
+        int textX = 5;
+        int textY = 25;
+        int size = 30;
+        int style = Font.BOLD;
+
         btn.setBounds(x, y, width, height);
-        btn.setText("X", Color.BLACK, unifont, Font.BOLD, 30, 0, 0);
+        btn.setText("x");
+        btn.setText(Color.BLACK, unifont, style, size, 0, 0);
         btn.boundColor = Color.RED;
         btn.backgroundColor = Color.WHITE;
-        btn.textY = 25;
+        // btn.textX = textX;
+        btn.textY = textY;
 
         // select language btn
         mbtns[1] = new MineButton();
@@ -48,12 +87,63 @@ public class OptionPanel extends StaticPanel_O {
         height = tileSize;
         x += tileSize / 2;
         y = tileSize * 5 / 4;
+        size = 40;
+
         btn.setBounds(x, y, width, height);
-        btn.setText(gf.getText.selectLanguage[0][0], Color.BLACK, maruMonica, Font.BOLD, 40, 0, 0);
+        btn.setText(Color.BLACK, maruMonica, style, size, 0, 0);
         btn.backgroundColor = Color.WHITE;
         btn.boundColor = Color.BLACK;
-        btn.textY = btn.getHeight() / 2 + 15;
 
+        textY = btn.getHeight() / 2 + 15;
+
+        // btn.textX = textX;
+        btn.textY = textY;
+
+        btn.setOnClick(() -> {
+            this.settingIndex = 1;
+        });
+
+        // enlgish btn
+        lbtns[0] = new MineButton();
+        btn = lbtns[0];
+
+        width = screenWidth - tileSize * 7 - tileSize / 2;
+        height = tileSize / 2;
+        x = tileSize * 6 + tileSize * 3 / 4;
+        size = 20;
+
+        btn.setBounds(x, y, width, height);
+        btn.setText("English");
+        btn.setText(Color.BLACK, maruMonica, style, size, 0, 0);
+        btn.backgroundColor = Color.WHITE;
+        btn.boundColor = Color.BLACK;
+
+        textY -= 20;
+
+        btn.textY = textY;
+        btn.textX = textX;
+
+        btn.setOnClick(() -> {
+            gf.getText.setLanguage(gf.getText.English);
+        });
+
+        // chinese btn
+        lbtns[1] = new MineButton();
+        btn = lbtns[1];
+
+        y += height + tileSize / 8;
+
+        btn.setBounds(x, y, width, height);
+        btn.setText("中文(Traditional)");
+        btn.setText(Color.BLACK, maruMonica, style, size, 0, 0);
+        btn.backgroundColor = Color.WHITE;
+        btn.boundColor = Color.BLACK;
+        btn.textY = textY;
+        btn.textX = textX;
+
+        btn.setOnClick(() -> {
+            gf.getText.setLanguage(gf.getText.Chinese);
+        });
     }
 
     public void setCloseBTN_OnClick(String panelName) {
