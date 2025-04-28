@@ -160,6 +160,16 @@ public class OptionPanel extends StaticPanel_O {
         mbtns[0].setOnClick(() -> {
             if (panelName != null) {
                 gf.layout.show(gf.cardPanel, panelName);
+                if (gf.player.inGamePanel) {
+                    gf.gamePanel.requestFocusInWindow();
+                }
+                for (int i = 1; i < gf.numberOfLevel; i++) {
+                    if (gf.player.inLevelPanel[i]) {
+                        gf.levelPanel[i].requestFocusInWindow();
+                        break;
+                    }
+                }
+                gameState = previousMapState;
             }
         });
     }

@@ -2,15 +2,19 @@ package setting;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.nio.file.OpenOption;
 
 import panel.GamePanel;
 import panel.LevelPanel;
+import panel.staticPanel.OptionPanel;
 
 public class KeyHandler implements KeyListener {
     GameFrame gf;
+    OptionPanel op;
     GamePanel gp;
     LevelPanel lvp[];
     CheckState cState;
+    GetText getText;
 
     public int gameState;
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
@@ -25,6 +29,7 @@ public class KeyHandler implements KeyListener {
 
     public KeyHandler(GameFrame gf) {
         this.gf = gf;
+        this.op = gf.optionPanel;
         this.gp = gf.gamePanel;
         this.lvp = new LevelPanel[gf.numberOfLevel];
         for (int i = 0; i < gf.numberOfLevel; i++) {
@@ -69,6 +74,17 @@ public class KeyHandler implements KeyListener {
             }
             if (code == KeyEvent.VK_ENTER) {
                 enterPressed = true;
+            }
+            if (code == KeyEvent.VK_ESCAPE) {
+                if (gf.player.inGamePanel) {
+                    openOptionPanel(gf.game);
+                }
+                for (int i = 1; i < gf.numberOfLevel; i++) {
+                    if (gf.player.inLevelPanel[i]) {
+                        openOptionPanel(gf.lv[i]);
+                        break;
+                    }
+                }
             }
         }
 
@@ -173,6 +189,13 @@ public class KeyHandler implements KeyListener {
             }
         }
 
+    }
+
+    public void openOptionPanel(String panelName) {
+        op.setCloseBTN_OnClick(panelName);
+        op.gameState = op.playState;
+        op.startGameThread();
+        gf.layout.show(gf.cardPanel, gf.option);
     }
 
     public void openDoor_GP() {
