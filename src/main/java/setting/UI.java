@@ -18,7 +18,7 @@ public class UI {
     GetText getText;
 
     int tileSize, screenWidth, screenHeigth, gameState;
-    Font defaultFont, maruMonica, unifont, HWMCT, Zomzi;
+    Font maruMonica, unifont, HWMCT, Zomzi;
     Graphics2D g2D;
 
     public String message;
@@ -65,7 +65,7 @@ public class UI {
 
         this.g2D = g2D;
 
-        g2D.setFont(maruMonica);
+        g2D.setFont(getText.defaultFont);
         g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2D.setColor(Color.WHITE);
 
@@ -229,6 +229,7 @@ public class UI {
         x += tileSize / 2;
         y += tileSize;
         g2D.setColor(Color.white);
+        g2D.setFont(getText.defaultFont);
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 25F));
         g2D.drawString(text, x, y);
 
@@ -270,6 +271,7 @@ public class UI {
         x += tileSize / 2;
         y += tileSize;
         g2D.setColor(Color.white);
+        g2D.setFont(getText.defaultFont);
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 25F));
         g2D.drawString(text, x, y);
     }

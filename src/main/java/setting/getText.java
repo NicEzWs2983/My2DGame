@@ -1,8 +1,15 @@
 package setting;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class GetText {
 
         GameFrame gf;
+
+        public Font defaultFont, maruMonica, unifont;
 
         public final int English = 1;
         public final int Chinese = 2;
@@ -66,18 +73,38 @@ public class GetText {
 
         public GetText(GameFrame gf) {
                 this.gf = gf;
+
+                InputStream is;
+                try {
+                        is = getClass().getResourceAsStream("/font/x12y16pxMaruMonica.ttf");
+                        maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+
+                        is = getClass().getResourceAsStream("/font/unifont_jp-16.0.02.otf");
+                        unifont = Font.createFont(Font.TRUETYPE_FONT, is);
+
+                } catch (FontFormatException e) {
+                        e.printStackTrace();
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+
                 setLanguage(English);
         }
 
         public void setCompletedLevel(int language) {
-                completedLevel = gf.player.level;
-                gameOver[1][2] = "You've completed " + completedLevel + " levels";
-                gameOver[2][2] = "你通過了" + completedLevel + "關";
+                completedLevel = gf.player.level - 1;
+                gameOver[1][1] = "You've completed " + completedLevel + " levels";
+                gameOver[2][1] = "你通過了" + completedLevel + "關";
                 gameOver[0] = gameOver[language];
         }
 
         public void setLanguage(int language) {
                 this.language = language;
+                if (language == English) {
+                        defaultFont = maruMonica;
+                } else if (language == Chinese) {
+                        defaultFont = unifont;
+                }
 
                 titleName[0] = titleName[language];
 

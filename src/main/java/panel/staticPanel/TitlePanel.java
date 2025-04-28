@@ -10,7 +10,7 @@ import setting.GameFrame;
 
 public class TitlePanel extends StaticPanel_O {
     StartButton startButton = new StartButton(this);
-    MineButton selectButton = new MineButton();
+    MineButton optionButton = new MineButton();
 
     public TitlePanel(GameFrame gf) {
         super(gf);
@@ -19,13 +19,13 @@ public class TitlePanel extends StaticPanel_O {
         btnSetter();
 
         this.add(startButton);
-        this.add(selectButton);
+        this.add(optionButton);
 
     }
 
     @Override
     public void checkLanguage() {
-        selectButton.setLanguage(gf.getText.option); // Option
+        optionButton.setLanguage(gf.getText.option, gf.getText.defaultFont); // Option
     }
 
     @Override
@@ -46,13 +46,13 @@ public class TitlePanel extends StaticPanel_O {
             gameState = nextMapState;
         });
 
-        // select btn
+        // option btn
         x = screenWidth - 3 * tileSize;
         y = screenHeigth - 2 * tileSize;
-        selectButton.setBounds(x, y, tileSize * 5 / 2, tileSize * 3 / 2);
-        selectButton.setText(Color.GREEN, maruMonica, Font.PLAIN, 30F, 30, 30);
+        optionButton.setBounds(x, y, tileSize * 5 / 2, tileSize * 3 / 2);
+        optionButton.setText(Color.GREEN, Font.PLAIN, 30F, 30, 30);
 
-        selectButton.setOnClick(() -> {
+        optionButton.setOnClick(() -> {
             gf.optionPanel.setCloseBTN_OnClick(gf.title);
             gf.layout.show(gf.cardPanel, gf.option);
             gf.optionPanel.gameState = gf.optionPanel.playState;
@@ -67,8 +67,6 @@ public class TitlePanel extends StaticPanel_O {
         g2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         drawTitleScreen();
-        startButton.setVisible(true);
-        selectButton.setVisible(true);
         repaint();
 
     }

@@ -40,18 +40,25 @@ public class GameOverPanel extends StaticPanel_O {
     }
 
     public void drawGameOverScreen() {
-        g2D.setFont(Zomzi);
+        if (gf.getText.language == gf.getText.Chinese) {
+            g2D.setFont(HWMCT);
+        } else {
+            g2D.setFont(Zomzi);
+        }
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 80F));
         g2D.setColor(Color.RED);
 
-        // gf.getText.setCompletedLevel();
-        String GameOverText[] = { "Game Over", "You've completed " + (gf.player.level - 1) + " levels" };
+        gf.getText.setCompletedLevel(gf.getText.language);
+        String[] GameOverText = { gf.getText.gameOver[0][0], gf.getText.gameOver[0][1] };
+        // Game Over
+        // You've completed " + (gf.player.level - 1) + " levels
+
         int x = getXForCenterText(GameOverText[0]);
         int y = tileSize * 3;
 
         g2D.drawString(GameOverText[0], x, y);
 
-        g2D.setFont(maruMonica);
+        g2D.setFont(gf.getText.defaultFont);
         g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 60F));
         g2D.setColor(Color.WHITE);
         x = getXForCenterText(GameOverText[1]);

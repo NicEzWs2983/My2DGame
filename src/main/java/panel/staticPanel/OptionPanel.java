@@ -53,7 +53,7 @@ public class OptionPanel extends StaticPanel_O {
 
     @Override
     public void checkLanguage() {
-        mbtns[1].setLanguage(gf.getText.selectLanguage); // Language
+        mbtns[1].setLanguage(gf.getText.selectLanguage, gf.getText.defaultFont); // Language
     }
 
     @Override
@@ -73,7 +73,8 @@ public class OptionPanel extends StaticPanel_O {
 
         btn.setBounds(x, y, width, height);
         btn.setText("x");
-        btn.setText(Color.BLACK, unifont, style, size, 0, 0);
+        btn.setText(Color.BLACK, style, size, 0, 0);
+        btn.font = unifont;
         btn.boundColor = Color.RED;
         btn.backgroundColor = Color.WHITE;
         // btn.textX = textX;
@@ -90,7 +91,7 @@ public class OptionPanel extends StaticPanel_O {
         size = 40;
 
         btn.setBounds(x, y, width, height);
-        btn.setText(Color.BLACK, maruMonica, style, size, 0, 0);
+        btn.setText(Color.BLACK, style, size, 0, 0);
         btn.backgroundColor = Color.WHITE;
         btn.boundColor = Color.BLACK;
 
@@ -114,7 +115,8 @@ public class OptionPanel extends StaticPanel_O {
 
         btn.setBounds(x, y, width, height);
         btn.setText("English");
-        btn.setText(Color.BLACK, maruMonica, style, size, 0, 0);
+        btn.setText(Color.BLACK, style, size, 0, 0);
+        btn.font = maruMonica;
         btn.backgroundColor = Color.WHITE;
         btn.boundColor = Color.BLACK;
 
@@ -135,7 +137,8 @@ public class OptionPanel extends StaticPanel_O {
 
         btn.setBounds(x, y, width, height);
         btn.setText("中文(Traditional)");
-        btn.setText(Color.BLACK, maruMonica, style, size, 0, 0);
+        btn.setText(Color.BLACK, style, size, 0, 0);
+        btn.font = maruMonica;
         btn.backgroundColor = Color.WHITE;
         btn.boundColor = Color.BLACK;
         btn.textY = textY;
