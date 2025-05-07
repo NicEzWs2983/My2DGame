@@ -83,8 +83,8 @@ public class TitlePanel extends StaticPanel_O {
         g2D.drawString(titleText, x, y);
 
         g2D.setFont(maruMonica);
-        g2D.setFont(g2D.getFont().deriveFont(Font.PLAIN, 20));
-        g2D.setColor(Color.blue);
+        g2D.setFont(g2D.getFont().deriveFont(Font.ITALIC, 25));
+        g2D.setColor(new Color(128, 231, 246));
 
         String text = gf.version;
         x = tileSize / 3;
