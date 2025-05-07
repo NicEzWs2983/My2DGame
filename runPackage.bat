@@ -1,6 +1,8 @@
 cls
 @echo off
 
+set "version=1.0.3"
+
 :設置窗口字體顏色
 color 0a
 
@@ -19,11 +21,11 @@ if %errorlevel% neq 0 (
 
 echo Running jpackage...
 
-jpackage^
+call jpackage^
     --type msi^
     --input target^
     --name TheDoorOfDestiny^
-    --main-jar my2dgame-1.0.3.jar^
+    --main-jar my2dgame-%version%.jar^
     --main-class com.example.Main^
     --java-options "--enable-preview"^
     --icon src\main\resources\icon\smile.ico^
@@ -32,8 +34,8 @@ jpackage^
     --win-dir-chooser^
     --win-per-user-install^
     --win-menu ^
-    --app-version "1.0.3"
-
+    --app-version %version%
+    
 echo jpackage finished.
 
 pause
