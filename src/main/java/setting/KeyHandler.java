@@ -2,7 +2,6 @@ package setting;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.nio.file.OpenOption;
 
 import panel.GamePanel;
 import panel.LevelPanel;

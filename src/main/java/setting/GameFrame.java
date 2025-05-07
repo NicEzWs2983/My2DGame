@@ -5,11 +5,9 @@ import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import button.*;
 import entity.Player;
 
 import entity.action.*;
-import object.*;
 import object.UIimage.WatchingSign;
 import panel.*;
 import panel.staticPanel.*;

@@ -1,6 +1,5 @@
 package setting;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import entity.NPC_Giant;

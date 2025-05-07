@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import panel.LevelPanel;
 import setting.*;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Player extends Entity {

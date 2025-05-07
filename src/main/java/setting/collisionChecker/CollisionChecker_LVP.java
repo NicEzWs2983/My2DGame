@@ -1,7 +1,5 @@
 package setting.collisionChecker;
 
-import java.util.Arrays;
-
 import entity.Entity;
 import panel.LevelPanel;
 import setting.GameFrame;
@@ -222,17 +220,17 @@ public class CollisionChecker_LVP {
 
     public int[] decreasCapacity(int max, int midle, int min) {
         if (gf.player.level < 5) {
-            max = max;
+            // max = max;
             midle += 1;
             min += 2;
         } else if (gf.player.level < 10) {
             max -= 1;
-            midle = midle;
+            // midle = midle;
             min += 1;
         } else if (gf.player.level < 15) {
             max -= 2;
             midle -= 1;
-            min = min;
+            // min = min;
         } else if (gf.player.level < 20) {
             max -= 3;
             midle -= 2;
@@ -255,7 +253,7 @@ public class CollisionChecker_LVP {
             midle += 4;
             min += 5;
         } else if (gf.player.level < 15) {
-            max = max;
+            // max = max;
             midle += 3;
             min += 4;
         } else if (gf.player.level < 20) {
