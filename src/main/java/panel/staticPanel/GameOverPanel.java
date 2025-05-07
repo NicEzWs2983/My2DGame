@@ -28,6 +28,8 @@ public class GameOverPanel extends StaticPanel_O {
         restartButton.addActionListener(e -> {
             gf.layout.show(gf.cardPanel, gf.title);
             gameState = nextMapState;
+            gf.titlePanel.gameState = gf.titlePanel.playState;
+            gf.titlePanel.startGameThread();
         });
     }
 

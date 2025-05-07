@@ -1,6 +1,7 @@
 
 import setting.*;
 
+// Oracle JDK 24
 public class Main {
 
     final String UUID = "90f60072-30b1-4c92-8a5f-5316c10ad418";
