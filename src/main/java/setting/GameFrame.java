@@ -58,6 +58,8 @@ public class GameFrame extends JFrame {
     public final String gameOver = "game over";
     public final String option = "option";
 
+    public final String version = "Version 1.0.3";
+
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

@@ -6,11 +6,11 @@
 
   <groupId>com.example</groupId>
   <artifactId>my2dgame</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 
   <properties>
-    <maven.compiler.source>17</maven.compiler.source> <!-- 根據你使用的 JDK -->
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source> <!-- 根據你使用的 JDK -->
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
   <build>
